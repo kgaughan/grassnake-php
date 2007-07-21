@@ -22,11 +22,27 @@ class TrackerUser extends AFK_User {
 		return $this->can('post');
 	}
 
+	public function __toString() {
+		return $this->get_username();
+	}
+
 	public static function get_logged_in_user_id() {
 		return isset($_SESSION['userId']) ? $_SESSION['userId'] : 0;
 	}
 
-	public static function load($ids, $except=false) {
+	public static function get_developers() {
+		global $db;
+		$dev_ids = $db->query_list("SELECT id FROM users WHERE is_dev");
+		self::preload($dev_ids);
+		$devs = array();
+		foreach ($dev_ids as $id) {
+			$devs[] = self::get($id);
+		}
+		usort($devs, array(__CLASS__, 'comparator'));
+		return $devs;
+	}
+
+	public static function load($ids) {
 		global $db;
 
 		if (!self::has(0)) {
@@ -39,6 +55,16 @@ class TrackerUser extends AFK_User {
 			$user->add_capabilities(array('post'));
 			self::add_instance($user);
 		}
+	}
+
+	public static function comparator(TrackerUser $a, TrackerUser $b) {
+		if ($a->get_username() == $a->get_username()) {
+			return 0;
+		}
+		if ($a->get_username() < $b->get_username()) {
+			return -1;
+		}
+		return 1;
 	}
 }
 ?>

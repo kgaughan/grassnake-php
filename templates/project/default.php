@@ -25,7 +25,7 @@ Issues for <?php ee($name) ?>
 			<?php foreach ($issues as $r) { ?>
 			<tr>
 				<td class="numeric"><?php echo $r['id'] ?></td>
-				<td><img src="../assets/images/star-unwatched.png" width="13" height="13" alt="Unwatched"></td>
+				<td><?php $this->render('star', $r) ?></td>
 				<td><?php echo_username($r['assigned_user_id']) ?></td>
 				<td><?php ee($r['priority']) ?></td>
 				<td><?php ee($r['resolution']) ?></td>

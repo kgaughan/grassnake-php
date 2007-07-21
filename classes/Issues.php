@@ -16,7 +16,7 @@ class Issues {
 		return $db->query_all("
 			SELECT		issues.id, title, project_id, project, resolution, priority,
 						COUNT(*) AS messages, MAX(posted) AS updated,
-						assigned_user_id, watches.user_id IS NULL AS watched
+						assigned_user_id, watches.user_id IS NOT NULL AS watched
 			FROM		issues
 			JOIN		projects    ON projects.id      = project_id
 			JOIN		priorities  ON priorities.id    = priority_id
@@ -69,6 +69,7 @@ class Issues {
 	}
 
 	public static function watch($id) {
+		global $db;
 		$db->insert('watches', array(
 			'user_id' => AFK_User::get_logged_in_user()->get_id(),
 			'issue_id' => $id));
@@ -76,15 +77,14 @@ class Issues {
 
 	public static function unwatch($id) {
 		global $db;
-
 		$db->execute("DELETE FROM watches WHERE user_id = %d AND issue_id = %d",
 			AFK_User::get_logged_in_user()->get_id(), $id);
 	}
 
-	public static function update($id, $priority_id, $resolution_id) {
+	public static function update($id, $priority_id, $resolution_id, $assigned_user_id) {
 		global $db;
 		$db->update('issues',
-			compact('priority_id', 'resolution_id'),
+			compact('priority_id', 'resolution_id', 'assigned_user_id'),
 			array('id' => array('=', $id)));
 	}
 
@@ -94,7 +94,7 @@ class Issues {
 		return $db->query_all("
 			SELECT		issues.id, title, priority, resolution,
 						COUNT(*) AS messages, MAX(posted) AS updated,
-						assigned_user_id, watches.user_id IS NULL AS watched
+						assigned_user_id, watches.user_id IS NOT NULL AS watched
 			FROM		issues
 			JOIN		priorities  ON priorities.id    = priority_id
 			JOIN		resolutions ON resolutions.id   = resolution_id

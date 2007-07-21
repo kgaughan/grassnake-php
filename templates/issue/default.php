@@ -28,7 +28,13 @@
 	</tr>
 	<tr>
 		<th><label for="user">Owned by</label></th>
-		<td><em>Not implemented</em></td>
+		<td>
+			<select name="user" id="user">
+				<?php foreach ($devs as $dev) { ?>
+				<option value="<?php ee($dev->get_id()) ?>"<?php if ($dev->get_id() == $assigned_user_id) echo ' selected="selected"' ?>><?php ee($dev->get_username()) ?></option>
+				<?php } ?>
+			</select>
+		</td>
 	</tr>
 </table>
 <input type="submit" value="Submit Message">

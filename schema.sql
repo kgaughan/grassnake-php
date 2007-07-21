@@ -71,11 +71,12 @@ CREATE TABLE messages (
 );
 
 CREATE TABLE users (
-    id    INTEGER          NOT NULL AUTO_INCREMENT,
-    email VARCHAR(128)     NOT NULL,
-    pwd   CHAR(40)         NOT NULL,
-    ip    INTEGER UNSIGNED NULL,
-    name  VARCHAR(128)     NOT NULL,
+    id     INTEGER          NOT NULL AUTO_INCREMENT,
+    email  VARCHAR(128)     NOT NULL,
+    pwd    CHAR(40)         NOT NULL,
+    ip     INTEGER UNSIGNED NULL,
+    name   VARCHAR(128)     NOT NULL,
+    is_dev TINYINT          NOT NULL DEFAULT 0,
 
 	PRIMARY KEY (id),
 	INDEX ix_email (email),

@@ -27,18 +27,18 @@
 <fieldset>
 <legend>Search</legend>
 
-<select name="criterion" disabled="disabled">
-<option value="1">All Issues</option>
-<option value="2">Open Issues</option>
-<option value="3">My Issues</option>
-<option value="4">My Watches</option>
-<option value="5">New Issues</option>
-<option value="6">Issues to Verify</option>
+<select name="criterion">
+<option value="all">All Issues</option>
+<option value="open">Open Issues</option>
+<option value="mine">My Issues</option>
+<option value="watches">My Watches</option>
+<option value="new">New Issues</option>
+<option value="triage">Issues to Triage</option>
 </select>
 for
-<input type="text" name="q" disabled="disabled" value="Not written yet.">
+<input type="text" name="q" value="">
 
-<input type="submit" value="Search" disabled="disabled">
+<input type="submit" value="Search">
 </fieldset>
 </form>
 <?php get_slot('sidebar') ?>

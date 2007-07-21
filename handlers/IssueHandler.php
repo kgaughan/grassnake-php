@@ -17,6 +17,7 @@ class IssueHandler extends AFK_HandlerBase {
 			$ctx->priorities = $this->get_priorities();
 			$ctx->messages = Issues::get_messages($ctx->id);
 			AFK_User::preload(collect_column($ctx->messages, 'user_id'));
+			$ctx->devs = TrackerUser::get_developers();
 			$ctx->page_title = $issue['title'];
 		}
 	}
@@ -28,7 +29,7 @@ class IssueHandler extends AFK_HandlerBase {
 				$ctx->not_found('No such issue.');
 			}
 			Issues::add_message($ctx->id, $ctx->message);
-			Issues::update($ctx->id, $ctx->priority, $ctx->resolution);
+			Issues::update($ctx->id, $ctx->priority, $ctx->resolution, $ctx->user);
 		}
 		$ctx->allow_rendering(false);
 		$ctx->redirect();
