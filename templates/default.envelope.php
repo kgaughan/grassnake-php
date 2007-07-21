@@ -4,7 +4,6 @@
 
 	<title><?php echo_title($page_title, 'GrassSnake') ?></title>
 	<?php stylesheets() ?>
-	<?php javascript(array('remoting')) ?>
 
 </head><body>
 

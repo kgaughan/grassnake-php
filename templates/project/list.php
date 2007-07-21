@@ -12,7 +12,6 @@ Projects
 	<table class="data">
 		<thead>
 			<tr>
-				<th class="numeric" width="5%">#</th>
 				<th>Project</th>
 				<th class="numeric" width="6%">Issues</th>
 				<th class="numeric" width="5%">Open</th>
@@ -27,7 +26,6 @@ Projects
 			?>
 			<?php foreach ($projects as $r) { ?>
 			<tr>
-				<td class="numeric"><?php echo $r['id'] ?></td>
 				<td><a href="<?php echo $r['id'] ?>"><?php ee($r['project']) ?></a></td>
 				<td class="numeric"><?php echo $r['issues'] ?></td>
 				<?php $count += $r['issues'] ?>
@@ -40,7 +38,7 @@ Projects
 		</tbody>
 		<tfoot>
 			<tr>
-				<th colspan="2">Totals</th>
+				<th>Totals</th>
 				<td class="numeric"><?php echo $count ?></td>
 				<td class="numeric"><?php echo $open ?></td>
 				<td class="numeric"><?php echo $suspended ?></td>

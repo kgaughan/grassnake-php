@@ -6,6 +6,7 @@ class Issues {
 
 		$id = $db->insert('issues', compact('project_id', 'title', 'project_id'));
 		self::add_message($id, $message);
+		self::watch($id);
 
 		return $id;
 	}
@@ -36,7 +37,9 @@ class Issues {
 			SELECT	project_id, project,
 					assigned_user_id,
 					title,
-					resolution_id, priority_id
+					resolution_id, priority_id,
+					resolution, priority,
+					last_updated
 			FROM	issues
 			JOIN	projects ON projects.id = project_id
 			JOIN	priorities ON priorities.id = priority_id
@@ -70,6 +73,10 @@ class Issues {
 
 	public static function watch($id) {
 		global $db;
+
+		// Just in case...
+		self::unwatch($id);
+
 		$db->insert('watches', array(
 			'user_id' => AFK_User::get_logged_in_user()->get_id(),
 			'issue_id' => $id));

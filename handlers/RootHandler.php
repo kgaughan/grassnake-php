@@ -7,7 +7,7 @@ class RootHandler extends AFK_HandlerBase {
 		$user = AFK_User::get_logged_in_user();
 
 		$ctx->issues = $db->query_all("
-			SELECT		issues.id, title, project_id, project, priority
+			SELECT		issues.id, title, project_id, project, priority, last_updated
 			FROM		issues
 			JOIN		projects    ON projects.id    = project_id
 			JOIN		priorities  ON priorities.id  = priority_id
@@ -16,12 +16,17 @@ class RootHandler extends AFK_HandlerBase {
 			ORDER BY	priorities.ordering DESC
 			", $user->get_id());
 
-		$ctx->watches = $db->query_all("
-			SELECT		issues.id, title
+		$ctx->watches = $db->query_all('
+			SELECT		issues.id, title, project_id, project, priority, resolution,
+						last_updated
 			FROM		issues
-			JOIN		watches ON issue_id = issues.id
-			WHERE		user_id = %d
-			", $user->get_id());
+			JOIN		watches     ON issue_id       = issues.id
+			JOIN		projects    ON projects.id    = project_id
+			JOIN		priorities  ON priorities.id  = priority_id
+			JOIN		resolutions ON resolutions.id = resolution_id
+			WHERE		user_id = %1$d AND (assigned_user_id <> %1$d OR assigned_user_id IS NULL)
+			ORDER BY	last_updated DESC
+			', $user->get_id());
 	}
 
 	public function on_get_about(AFK_Context $ctx) {

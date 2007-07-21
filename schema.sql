@@ -13,6 +13,7 @@ CREATE TABLE issues (
     resolution_id    TINYINT      NOT NULL DEFAULT 0,
     priority_id      TINYINT      NOT NULL DEFAULT 4,
     title            VARCHAR(255) NOT NULL,
+    last_updated     TIMESTAMP    NOT NULL,
 
     PRIMARY KEY  (id),
     INDEX ix_project (project_id, assigned_user_id),

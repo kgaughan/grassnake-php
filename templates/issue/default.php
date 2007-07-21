@@ -11,6 +11,23 @@
 <?php $this->render_each('message', $messages) ?>
 
 <?php start_slot('sidebar') ?>
+<table class="data">
+	<thead>
+		<tr>
+			<th>Priority</th>
+			<th>Resolution</th>
+			<th>Last Updated</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><?php ee($priority) ?></td>
+			<td><?php ee($resolution) ?></td>
+			<td><?php ee(date('j-M-Y, H:i', strtotime($last_updated))) ?></td>
+		</tr>
+	</tbody>
+</table>
+
 <form method="post" action="">
 <fieldset>
 <legend>New Message</legend>
