@@ -31,7 +31,7 @@
 		<td><em>Not implemented</em></td>
 	</tr>
 </table>
-<input type="submit" value="Submit Message"/>
+<input type="submit" value="Submit Message">
 </fieldset>
 </form>
 <?php end_slot() ?>

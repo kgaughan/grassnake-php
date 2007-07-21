@@ -15,12 +15,18 @@ class Issues {
 
 		return $db->query_all("
 			SELECT		issues.id, title, project_id, project, resolution, priority,
-						assigned_user_id
+						COUNT(*) AS messages, MAX(posted) AS updated,
+						assigned_user_id, watches.user_id IS NULL AS watched
 			FROM		issues
-			JOIN		projects    ON projects.id    = project_id
-			JOIN		priorities  ON priorities.id  = priority_id
-			JOIN		resolutions ON resolutions.id = resolution_id
-			ORDER BY	issues.id ASC");
+			JOIN		projects    ON projects.id      = project_id
+			JOIN		priorities  ON priorities.id    = priority_id
+			JOIN		resolutions ON resolutions.id   = resolution_id
+			JOIN		messages    ON issues.id        = messages.issue_id
+			LEFT JOIN	watches		ON watches.issue_id = issues.id
+			WHERE		watches.user_id = %d OR watches.user_id IS NULL
+			GROUP BY	issues.id
+			ORDER BY	is_open ASC, issues.id ASC
+			", AFK_User::get_logged_in_user()->get_id());
 	}
 
 	public static function get_details($id) {
@@ -86,16 +92,18 @@ class Issues {
 		global $db;
 
 		return $db->query_all("
-			SELECT		issues.id, title, priority, resolution, MAX(posted) AS updated,
-						assigned_user_id
+			SELECT		issues.id, title, priority, resolution,
+						COUNT(*) AS messages, MAX(posted) AS updated,
+						assigned_user_id, watches.user_id IS NULL AS watched
 			FROM		issues
-			JOIN		priorities  ON priorities.id  = priority_id
-			JOIN		resolutions ON resolutions.id = resolution_id
-			JOIN		messages    ON issues.id      = issue_id
-			WHERE		project_id = %d
+			JOIN		priorities  ON priorities.id    = priority_id
+			JOIN		resolutions ON resolutions.id   = resolution_id
+			JOIN		messages    ON issues.id        = messages.issue_id
+			LEFT JOIN	watches		ON watches.issue_id = issues.id
+			WHERE		project_id = %d AND (watches.user_id = %d OR watches.user_id IS NULL)
 			GROUP BY	issues.id
-			ORDER BY	issues.id ASC
-			", $id);
+			ORDER BY	is_open ASC, issues.id ASC
+			", $id, AFK_User::get_logged_in_user()->get_id());
 	}
 }
 ?>

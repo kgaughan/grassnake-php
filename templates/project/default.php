@@ -25,7 +25,7 @@ Issues for <?php ee($name) ?>
 			<?php foreach ($issues as $r) { ?>
 			<tr>
 				<td class="numeric"><?php echo $r['id'] ?></td>
-				<td><img src="../assets/images/star-on.png" width="13" height="13" alt="Watched"/></td>
+				<td><img src="../assets/images/star-unwatched.png" width="13" height="13" alt="Unwatched"></td>
 				<td><?php echo_username($r['assigned_user_id']) ?></td>
 				<td><?php ee($r['priority']) ?></td>
 				<td><?php ee($r['resolution']) ?></td>
@@ -43,7 +43,7 @@ Issues for <?php ee($name) ?>
 <table>
 	<tr>
 		<th><label for="title">Title</label></th>
-		<td><input type="text" name="title" id="title" value=""/></td>
+		<td><input type="text" name="title" id="title" value=""></td>
 	</tr>
 	<tr>
 		<td colspan="2"><textarea name="message" rows="15">
@@ -64,12 +64,12 @@ Please provide any additional information below.
 	<tr>
 		<th>Type</th>
 		<td>
-			<label><input type="radio" name="priority" value="4" checked="checked"/> Bug</label>
-			<label><input type="radio" name="priority" value="1"/> Enhancement</label>
+			<label><input type="radio" name="priority" value="4" checked="checked"> Bug</label>
+			<label><input type="radio" name="priority" value="1"> Enhancement</label>
 		</td>
 	</tr>
 </table>
-<input type="submit" value="Submit Issue"/>
+<input type="submit" value="Submit Issue">
 </fieldset>
 </form>
 <?php end_slot() ?>

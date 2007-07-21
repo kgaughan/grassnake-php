@@ -53,8 +53,8 @@ Projects
 <form method="post" action="">
 <fieldset>
 <legend>New Project</legend>
-<input type="text" name="name" value=""/>
-<input type="submit" value="Add"/>
+<input type="text" name="name" value="">
+<input type="submit" value="Add">
 </fieldset>
 </form>
 <?php end_slot() ?>

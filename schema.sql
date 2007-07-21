@@ -10,7 +10,7 @@ CREATE TABLE issues (
     id               INTEGER      NOT NULL AUTO_INCREMENT,
     project_id       INTEGER      NOT NULL,
     assigned_user_id INTEGER      NULL,
-    resolution_id    TINYINT      NOT NULL DEFAULT 1,
+    resolution_id    TINYINT      NOT NULL DEFAULT 0,
     priority_id      TINYINT      NOT NULL DEFAULT 4,
     title            VARCHAR(255) NOT NULL,
 

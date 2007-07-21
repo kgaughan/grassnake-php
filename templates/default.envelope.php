@@ -1,18 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
-<html><head>
+<html lang="en"><head>
 
 	<title><?php echo_title($page_title, 'GrassSnake') ?></title>
 	<?php stylesheets() ?>
+	<?php javascript(array('remoting')) ?>
 
 </head><body>
 
 <div id="nav" align="right">
 <span style="float:left">
 <a href="<?php ee($ctx->application_root()) ?>">GrassSnake</a>
-<?php if (has_slot('breadcrumbs')) { ?>
-	&raquo; <?php get_slot('breadcrumbs') ?>
-<?php } ?>
+<?php if (has_slot('breadcrumbs')) { ?> &raquo; <?php } ?>
+<?php get_slot('breadcrumbs') ?>
 </span>
 
 <?php ee(AFK_User::get_logged_in_user()->get_username()) ?> |
@@ -36,9 +36,9 @@
 <option value="6">Issues to Verify</option>
 </select>
 for
-<input type="text" name="q" disabled="disabled" value="Not written yet."/>
+<input type="text" name="q" disabled="disabled" value="Not written yet.">
 
-<input type="submit" value="Search" disabled="disabled"/>
+<input type="submit" value="Search" disabled="disabled">
 </fieldset>
 </form>
 <?php get_slot('sidebar') ?>

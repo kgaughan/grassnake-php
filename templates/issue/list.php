@@ -16,7 +16,7 @@ All Issues
 				<th width="13">&nbsp;</th>
 				<th width="18%">Assigned to</th>
 				<th width="10%">Priority</th>
-				<th width="9%">Resolution</th>
+				<th width="10%">Resolution</th>
 				<th>Title</th>
 			</tr>
 		</thead>
@@ -24,7 +24,7 @@ All Issues
 			<?php foreach ($issues as $r) { ?>
 			<tr>
 				<td class="numeric"><?php echo $r['id'] ?></td>
-				<td><img src="../assets/images/star-on.png" width="13" height="13" alt="Watched"/></td>
+				<td><img src="../assets/images/star-unwatched.png" width="13" height="13" alt="Unwatched"></td>
 				<td><?php echo_username($r['assigned_user_id']) ?></td>
 				<td><?php ee($r['priority']) ?></td>
 				<td><?php ee($r['resolution']) ?></td>

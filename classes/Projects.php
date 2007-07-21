@@ -17,7 +17,7 @@ class Projects {
 						COALESCE(SUM(resolution_id = 2), 0) AS suspended
 			FROM		projects
 			LEFT JOIN	issues ON issues.project_id = projects.id
-			WHERE		is_active = 'Y'
+			WHERE		is_active = 1
 			GROUP BY	projects.id
 			ORDER BY	project ASC");
 	}
