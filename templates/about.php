@@ -6,12 +6,14 @@ About GrassSnake
 
 <h1>About GrassSnake</h1>
 
-<p><img src="assets/images/logo.png" width="76" height="95" alt="GrassSnake" style="float:right">
+<p><img src="assets/images/logo.png" width="76" height="95" alt="GrassSnake"
+style="float:right" title="Holy crap! It&rsquo;s a logo!">
 <cite>GrassSnake</cite> is a minimalist and&mdash;hopefully&mdash;easy to use
-bug and issue tracker written in <a href="http://php.net/">PHP</a> using
-<cite>AFK</cite>, a library with a built-in miniature web application
-framework. It was initially written by <a href="http://talideon.com/">Keith
-Gaughan</a> on-and-off during July 2007 and was loosely based on another bug
+bug and issue tracker written in <a href="http://php.net/"
+title="Training wheels">PHP</a> using <cite title="Bicycle">AFK</cite>, a
+library with a built-in miniature web application framework. It was initially
+written by <a href="http://talideon.com/" title="Yours truly">Keith Gaughan</a>
+on-and-off during July 2007 and was loosely based on another bug
 tracker&mdash;also called GrassSnake&mdash;he wrote in ASP back in 2002.</p>
 
 <h2>What&rsquo;s with the name?</h2>
@@ -27,7 +29,7 @@ A lot of the UI and design choices I made were motivated by things I
 strongly disliked about the bug trackers I&rsquo;ve used. Its strongest
 anti-inspirations are <cite>Bugzilla</cite> and <cite>phpBugTracker</cite>,
 both of which have terribly obtuse UIs. Most of the other open source
-issue trackers aren&rsquo;t much better.</p>
+issue trackers aren&rsquo;t much better. Trac I remain puzzled by.</p>
 
 <p>Minor influences were <cite>FogBugz</cite>, which I used for a while at
 one of my previous jobs and which I can barely remember anything about, and the
@@ -51,7 +53,22 @@ the better issue trackers out there.</p>
 <li>It would be nice to use my remoting code for sending the watch/unwatch
     requests back to the server, though it&rsquo; hardly necessary.</li>
 <li>I need to write the search code.</li>
+<li>Issue merging.</li>
+<li>An actual admin backend of some kind.</li>
 </ul>
+
+<h2>Is there anything GrassSnake is definitely never going to do?</h2>
+
+<p>Oh, yeah! It&rsquo;s issue metadata isn&rsquo;t going to grow any greater
+than it already is. It&rsquo;s never going to include task tracking as I
+believe that&rsquo;s something better left to an external tool and its
+presence in GrassSnake could easily lead to management doing nasty, misleading
+things with pseudo-metrics. I can&rsquo;t see it ever having a wiki built
+into it any time soon either, and I have yet to see the benefits of using
+an issue tracker as a project management tool beyond keeping track of
+enhancement requests and the like.</p>
+
+<p>It may get SCM integration at some point though...</p>
 
 <h2>Licence details?</h2>
 

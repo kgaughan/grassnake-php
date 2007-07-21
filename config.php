@@ -44,8 +44,6 @@ function init() {
 
 	AFK_User::set_implementation('TrackerUser');
 
-	$_SESSION['userId'] = 1;
-
 	return array();
 }
 ?>

@@ -4,7 +4,7 @@ class Issues {
 	public static function add($project_id, $priority_id, $title, $message) {
 		global $db;
 
-		$id = $db->insert('issues', compact('project_id', 'title', 'project_id'));
+		$id = $db->insert('issues', compact('project_id', 'title', 'priority_id'));
 		self::add_message($id, $message);
 		self::watch($id);
 
