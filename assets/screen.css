@@ -1,0 +1,99 @@
+h1 {
+	margin-bottom: 0;
+}
+
+#body {
+	padding: 0 32em 0 1em;
+}
+
+#nav {
+	background: black url(images/shadow.png) bottom left repeat-x;
+	color: orange;
+	font-weight: bold;
+	font-size: 85%;
+	padding: 0.25ex 0.5ex 0.65ex 0.5ex;
+}
+
+#nav a {
+	color: white;
+	text-decoration: none;
+}
+
+#nav a:hover {
+	text-decoration: underline;
+}
+
+form table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+form table td, form table th {
+	padding; 0;
+	margin: 0;
+}
+
+div#sidebar {
+	float: right;
+	width: 30em;
+	margin-right: -31em;
+}
+
+div#sidebar form {
+	margin-bottom: 1em;
+}
+
+form fieldset {
+	border: none;
+	padding: 0;
+	border-top: 1px solid orange;
+}
+
+form input[type=text], form textarea, form select {
+	border: 1px solid silver;
+	font: inherit;
+}
+
+form input[type=submit] {
+	background: white;
+	border: 3px double silver;
+	border-bottom-color: black;
+	border-right-color: black;
+}
+
+form table th {
+	white-space: nowrap;
+	width: 1%;
+}
+
+form table input[type=text], form table select, form table textarea {
+	width: 99%;
+}
+
+.message {
+	overflow: hidden;
+	padding: 1em 1em 0 12em;
+	border-bottom: 1px solid #DDD;
+}
+
+.message .metadata {
+	float: left;
+	width: 14em;
+	margin: 0 0 1em -15em;
+	font-size: 80%;
+	color: gray;
+	text-align: right;
+	
+}
+
+.message pre {
+	margin: 0 0 1em 0;
+	overflow: auto;
+	width: 100%;
+}
+
+.first {
+	border-top: 1px solid #DDD;
+	background: #F8F8F8;
+	margin-top: 1em;
+}
