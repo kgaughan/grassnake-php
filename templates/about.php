@@ -6,13 +6,13 @@ About GrassSnake
 
 <h1>About GrassSnake</h1>
 
-<p><cite>GrassSnake</cite> is a minimalist and&mdash;hopefully&mdash;easy to
-use bug and issue tracker written in <a href="http://php.net/">PHP</a> using
+<p><img src="assets/images/logo.png" width="76" height="95" alt="GrassSnake" style="float:right">
+<cite>GrassSnake</cite> is a minimalist and&mdash;hopefully&mdash;easy to use
+bug and issue tracker written in <a href="http://php.net/">PHP</a> using
 <cite>AFK</cite>, a library with a built-in miniature web application
 framework. It was initially written by <a href="http://talideon.com/">Keith
-Gaughan</a> on-and-off during July 2007 and was loosely based on another
-bug tracker&mdash;also called GrassSnake&mdash;he wrote in ASP back in
-2002.</p>
+Gaughan</a> on-and-off during July 2007 and was loosely based on another bug
+tracker&mdash;also called GrassSnake&mdash;he wrote in ASP back in 2002.</p>
 
 <h2>What&rsquo;s with the name?</h2>
 
