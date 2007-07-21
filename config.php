@@ -15,6 +15,12 @@ function routes() {
 	$r->route('/projects/{id}', array('_handler' => 'Project'), array('id' => '\d*'));
 	$r->route('/issues/{id}',   array('_handler' => 'Issue'),   array('id' => '\d*'));
 
+	$r->route('/watches/',
+		array('_handler' => 'Watch', '_view' => 'new'));
+	$r->route('/watches/{id}',
+		array('_handler' => 'Watch', '_view' => 'watch'),
+		array('id' => '\d+'));
+
 	$r->fallback(array('_handler' => 'AFK_Default'));
 	return $r;
 }

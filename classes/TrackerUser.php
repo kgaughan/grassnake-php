@@ -26,22 +26,19 @@ class TrackerUser extends AFK_User {
 		return isset($_SESSION['userId']) ? $_SESSION['userId'] : 0;
 	}
 
-	public static function load($ids) {
+	public static function load($ids, $except=false) {
 		global $db;
-		$users = array();
 
-		if (array_search(0, $ids) !== false) {
-			$users[0] = new TrackerUser(0, null, 'Anonymous Hero');
+		if (!self::has(0)) {
+			self::add_instance(new TrackerUser(0, null, 'Anonymous Hero'));
 		}
 
 		$db->query("SELECT id, email, name FROM users WHERE id IN (%s)", $ids);
 		while ($r = $db->fetch()) {
 			$user = new TrackerUser($r['id'], $r['email'], $r['name']);
 			$user->add_capabilities(array('post'));
-			$users[$r['id']] = $user;
+			self::add_instance($user);
 		}
-
-		return $users;
 	}
 }
 ?>

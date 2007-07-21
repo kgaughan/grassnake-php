@@ -42,18 +42,15 @@ function select($name, $elements, $default=null) {
 	echo '</select>';
 }
 
-function format_message($message) {
-	static $regex = null;
-	if (is_null($regex)) {
-		$to_highlight = array(
-			'What steps will reproduce the problem?',
-			'What is the expected output? What do you see instead?',
-			'What version of the product are you using? On what operating system?',
-			'Please provide any additional information below.');
-		$to_highlight = array_map('e', $to_highlight);
-		$to_highlight = array_map('preg_quote', $to_highlight);
-		$regex = '/^(\s*)(' . implode('|', $to_highlight) . ')\s*$/m';
-	}
+function format_report($message) {
+	$to_highlight = array(
+		'What steps will reproduce the problem?',
+		'What is the expected output? What do you see instead?',
+		'What version of the product are you using? On what operating system?',
+		'Please provide any additional information below.');
+	$to_highlight = array_map('e', $to_highlight);
+	$to_highlight = array_map('preg_quote', $to_highlight);
+	$regex = '/^(\s*)(' . implode('|', $to_highlight) . ')\s*$/m';
 	return preg_replace($regex, "$1<strong>$2</strong>", e($message));
 }
 ?>

@@ -66,22 +66,22 @@ table.data {
 	width: 100%;
 }
 
-table.data a {
-	display: block;
-}
-
-table.data a:hover {
-	background: #ffc;
-}
-
 table.data th, table.data td {
-	border-bottom: 1px solid #666;
-	padding: 0.25ex 0.5ex;
+	border-bottom: 1px solid silver;
+	padding: 0.125ex 0.5ex;
 }
 
 table.data th {
-	background: #666;
-	color: white;
+	background: black;
+	color: orange;
+}
+
+table.data thead th {
+	border: none;
+}
+
+table.data thead th + th {
+	border-left: 1px solid white;
 }
 
 table.data tfoot th {

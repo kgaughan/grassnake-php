@@ -62,6 +62,19 @@ class Issues {
 			", $id, AFK_User::get_logged_in_user()->get_id(), $message);
 	}
 
+	public static function watch($id) {
+		$db->insert('watches', array(
+			'user_id' => AFK_User::get_logged_in_user()->get_id(),
+			'issue_id' => $id));
+	}
+
+	public static function unwatch($id) {
+		global $db;
+
+		$db->execute("DELETE FROM watches WHERE user_id = %d AND issue_id = %d",
+			AFK_User::get_logged_in_user()->get_id(), $id);
+	}
+
 	public static function update($id, $priority_id, $resolution_id) {
 		global $db;
 		$db->update('issues',
