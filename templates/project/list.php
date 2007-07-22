@@ -52,7 +52,16 @@ Projects
 <form method="post" action="">
 <fieldset>
 <legend>New Project</legend>
-<input type="text" name="name" value="">
+<table>
+	<tr>
+		<th><label for="name">Name</label></th>
+		<td><input type="text" name="name" id="name" value=""></td>
+	</tr>
+	<tr>
+		<th><label for="user">Lead</label></th>
+		<td><?php $this->render('developer-select', compact('devs')) ?></td>
+	</tr>
+</table>
 <input type="submit" value="Add">
 </fieldset>
 </form>

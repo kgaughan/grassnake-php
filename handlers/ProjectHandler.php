@@ -4,6 +4,7 @@ class ProjectHandler extends AFK_HandlerBase {
 	public function on_get(AFK_Context $ctx) {
 		if ($ctx->id == '') {
 			$ctx->projects = Projects::get_active();
+			$ctx->devs = Users::get_developers();
 			$ctx->page_title = 'Active Projects';
 			$ctx->change_view('list');
 		} else {
@@ -22,7 +23,7 @@ class ProjectHandler extends AFK_HandlerBase {
 
 		$ctx->allow_rendering(false);
 		if ($ctx->id == '') {
-			$ctx->redirect(303, Projects::add($ctx->name));
+			$ctx->redirect(303, Projects::add($ctx->name, $ctx->user));
 		} else {
 			Issues::add($ctx->id, $ctx->priority, $ctx->title, $ctx->message);
 			$ctx->redirect(303);

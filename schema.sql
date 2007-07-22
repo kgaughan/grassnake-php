@@ -1,7 +1,8 @@
 CREATE TABLE projects (
-    id        INTEGER     NOT NULL AUTO_INCREMENT,
-    is_active TINYINT     NOT NULL DEFAULT 1,
-    project   VARCHAR(64) NOT NULL,
+    id           INTEGER     NOT NULL AUTO_INCREMENT,
+    is_active    TINYINT     NOT NULL DEFAULT 1,
+    project      VARCHAR(64) NOT NULL,
+    lead_user_id INTEGER     NOT NULL,
 
     PRIMARY KEY  (id)
 );

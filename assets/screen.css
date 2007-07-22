@@ -62,8 +62,9 @@ form input[type=submit] {
 }
 
 form table th {
-	white-space: nowrap;
 	width: 1%;
+	padding-right: 1ex;
+	text-align: right;
 }
 
 form table input[type=text], form table select, form table textarea {

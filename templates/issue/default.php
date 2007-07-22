@@ -46,13 +46,7 @@
 	</tr>
 	<tr>
 		<th><label for="user">Owned by</label></th>
-		<td>
-			<select name="user" id="user">
-				<?php foreach ($devs as $dev) { ?>
-				<option value="<?php ee($dev->get_id()) ?>"<?php if ($dev->get_id() == $assigned_user_id) echo ' selected="selected"' ?>><?php ee($dev->get_username()) ?></option>
-				<?php } ?>
-			</select>
-		</td>
+		<td><?php $this->render('developer-select', compact('devs', 'assigned_user_id')) ?></td>
 	</tr>
 </table>
 <input type="submit" value="Submit Message">

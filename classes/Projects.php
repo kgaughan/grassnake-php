@@ -1,10 +1,10 @@
 <?php
 class Projects {
 
-	public static function add($project) {
+	public static function add($project, $lead_user_id) {
 		global $db;
 
-		return $db->insert('projects', compact('project'));
+		return $db->insert('projects', compact('project', 'lead_user_id'));
 	}
 
 	public static function get_active() {
