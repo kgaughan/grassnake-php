@@ -13,7 +13,7 @@ function echo_username($id=null) {
 	if ($id == '') {
 		echo '&mdash;';
 	} else {
-		$user = AFK_User::get($id);
+		$user = Users::get($id);
 		$profile = $user->get_profile();
 		if (!is_null($profile)) {
 			echo '<a href="', e($profile), '">';

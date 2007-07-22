@@ -4,7 +4,7 @@ class IssueHandler extends AFK_HandlerBase {
 	public function on_get(AFK_Context $ctx) {
 		if ($ctx->id == '') {
 			$ctx->issues = Issues::get_all();
-			AFK_User::preload(collect_column($ctx->issues, 'assigned_user_id'));
+			Users::preload(collect_column($ctx->issues, 'assigned_user_id'));
 			$ctx->page_title = 'All Issues';
 			$ctx->change_view('list');
 		} else {
@@ -16,14 +16,14 @@ class IssueHandler extends AFK_HandlerBase {
 			$ctx->resolutions = $this->get_resolutions();
 			$ctx->priorities = $this->get_priorities();
 			$ctx->messages = Issues::get_messages($ctx->id);
-			AFK_User::preload(collect_column($ctx->messages, 'user_id'));
-			$ctx->devs = TrackerUser::get_developers();
+			Users::preload(collect_column($ctx->messages, 'user_id'));
+			$ctx->devs = Users::get_developers();
 			$ctx->page_title = $issue['title'];
 		}
 	}
 
 	public function on_post(AFK_Context $ctx) {
-		AFK_User::prerequisites('post');
+		Users::prerequisites('post');
 
 		if ($ctx->id != '') {
 			$issue = Issues::get_details($ctx->id);

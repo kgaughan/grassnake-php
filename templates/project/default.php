@@ -5,7 +5,7 @@
 Issues for <?php ee($name) ?>
 <?php end_slot() ?>
 
-<h1>Issues for <?php ee($name) ?></h1>
+<h1>Issues for <strong><?php ee($name) ?></strong></h1>
 
 <?php if (empty($issues)) { ?>
 	<p>This project has no open issues. Maybe you should create one?</p>
@@ -36,7 +36,7 @@ Issues for <?php ee($name) ?>
 	</table>
 <?php } ?>
 
-<?php if (AFK_User::get_logged_in_user()->can('post')) { ?>
+<?php if (Users::current()->can('post')) { ?>
 <?php start_slot('sidebar') ?>
 <form method="post" action="">
 <fieldset>

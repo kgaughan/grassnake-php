@@ -47,7 +47,7 @@ Projects
 	</table>
 <?php } ?>
 
-<?php if (AFK_User::get_logged_in_user()->can('post')) { ?>
+<?php if (Users::current()->can('post')) { ?>
 <?php start_slot('sidebar') ?>
 <form method="post" action="">
 <fieldset>

@@ -26,8 +26,8 @@ class Issues {
 			LEFT JOIN	watches		ON watches.issue_id = issues.id
 			WHERE		watches.user_id = %d OR watches.user_id IS NULL
 			GROUP BY	issues.id
-			ORDER BY	is_open ASC, issues.id ASC
-			", AFK_User::get_logged_in_user()->get_id());
+			ORDER BY	issues.id ASC
+			", Users::current()->get_id());
 	}
 
 	public static function get_details($id) {
@@ -68,7 +68,7 @@ class Issues {
 			) VALUES (
 				%d, %d, NOW(), %s
 			)
-			", $id, AFK_User::get_logged_in_user()->get_id(), $message);
+			", $id, Users::current()->get_id(), $message);
 	}
 
 	public static function watch($id) {
@@ -78,14 +78,14 @@ class Issues {
 		self::unwatch($id);
 
 		$db->insert('watches', array(
-			'user_id' => AFK_User::get_logged_in_user()->get_id(),
+			'user_id' => Users::current()->get_id(),
 			'issue_id' => $id));
 	}
 
 	public static function unwatch($id) {
 		global $db;
 		$db->execute("DELETE FROM watches WHERE user_id = %d AND issue_id = %d",
-			AFK_User::get_logged_in_user()->get_id(), $id);
+			Users::current()->get_id(), $id);
 	}
 
 	public static function update($id, $priority_id, $resolution_id, $assigned_user_id) {
@@ -109,8 +109,8 @@ class Issues {
 			LEFT JOIN	watches		ON watches.issue_id = issues.id
 			WHERE		project_id = %d AND (watches.user_id = %d OR watches.user_id IS NULL)
 			GROUP BY	issues.id
-			ORDER BY	is_open ASC, issues.id ASC
-			", $id, AFK_User::get_logged_in_user()->get_id());
+			ORDER BY	is_open DESC, issues.id ASC
+			", $id, Users::current()->get_id());
 	}
 }
 ?>

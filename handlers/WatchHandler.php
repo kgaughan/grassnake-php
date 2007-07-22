@@ -2,14 +2,14 @@
 class WatchHandler extends AFK_HandlerBase {
 
 	public function on_post_new(AFK_Context $ctx) {
-		AFK_User::prerequisites('post');
+		Users::prerequisites('post');
 		Issues::watch($ctx->id);
 		$ctx->allow_rendering(false);
 		$ctx->redirect(303, $ctx->HTTP_REFERER);
 	}
 
 	public function on_delete_watch(AFK_Context $ctx) {
-		AFK_User::prerequisites('post');
+		Users::prerequisites('post');
 		Issues::unwatch($ctx->id);
 		$ctx->allow_rendering(false);
 		$ctx->redirect(303, $ctx->HTTP_REFERER);

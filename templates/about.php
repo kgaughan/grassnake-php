@@ -44,8 +44,6 @@ the better issue trackers out there.</p>
 <p>A few things:</p>
 
 <ul>
-<li>GrassSnake is currently using a hard-wired user. I need to extend
-	<code>TrackerUser</code> to support IP-based users.</li>
 <li>AFK has an implicit invocation system built into it. I want to get
     GrassSnake to use it to expose various event for plug-ins to respond to.
     This would mean that things which don&rsquo;t need to be part of the

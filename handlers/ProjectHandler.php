@@ -12,13 +12,13 @@ class ProjectHandler extends AFK_HandlerBase {
 				$ctx->not_found('No such project.');
 			}
 			$ctx->issues = Issues::get_all_for_project($ctx->id);
-			AFK_User::preload(collect_column($ctx->issues, 'assigned_user_id'));
+			Users::preload(collect_column($ctx->issues, 'assigned_user_id'));
 			$ctx->page_title = $ctx->name;
 		}
 	}
 
 	public function on_post(AFK_Context $ctx) {
-		AFK_User::prerequisites('post');
+		Users::prerequisites('post');
 
 		$ctx->allow_rendering(false);
 		if ($ctx->id == '') {

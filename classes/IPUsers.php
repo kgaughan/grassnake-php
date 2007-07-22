@@ -1,7 +1,7 @@
 <?php
-class IPTrackerUser extends TrackerUser {
+class IPUsers extends Users {
 
-	public static function get_logged_in_user_id() {
+	protected function get_current_user_id() {
 		global $db;
 		static $id = null;
 

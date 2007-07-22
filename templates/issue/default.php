@@ -28,7 +28,7 @@
 	</tbody>
 </table>
 
-<?php if (AFK_User::get_logged_in_user()->can('post')) { ?>
+<?php if (Users::current()->can('post')) { ?>
 <form method="post" action="">
 <fieldset>
 <legend>New Message</legend>

@@ -14,7 +14,7 @@
 <?php get_slot('breadcrumbs') ?>
 </span>
 
-<?php ee(AFK_User::get_logged_in_user()->get_username()) ?> |
+<?php ee(Users::current()->get_username()) ?> |
 <a href="<?php ee($ctx->application_root()) ?>about">About</a> |
 <a href="<?php ee($ctx->application_root()) ?>projects/">Projects</a> |
 <a href="<?php ee($ctx->application_root()) ?>issues/">Issues</a>

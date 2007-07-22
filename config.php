@@ -34,15 +34,12 @@ function init() {
 
 	if (defined('DB_NAME') && DB_NAME != '') {
 		$db = new DB_MySQL(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+		$db->set_logger(new DB_BasicLogger);
 	}
 
 	session_start();
 
-	if (isset($db)) {
-		$db->set_logger(new DB_BasicLogger);
-	}
-
-	AFK_User::set_implementation('IPTrackerUser');
+	AFK_Users::set_implementation(new IPUsers());
 
 	return array();
 }
