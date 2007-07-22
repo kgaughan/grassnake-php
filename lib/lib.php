@@ -42,6 +42,10 @@ function select($name, $elements, $default=null) {
 	echo '</select>';
 }
 
+function format_message($message, $is_report) {
+	return nl2br($is_report ? format_report($message) : e($message));
+}
+
 function format_report($message) {
 	$to_highlight = array(
 		'What steps will reproduce the problem?',

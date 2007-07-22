@@ -72,14 +72,14 @@ form table input[type=text], form table select, form table textarea {
 
 .message {
 	overflow: hidden;
-	padding: 1em 1em 0 12em;
+	padding: 1em 1em 1em 12em;
 	border-bottom: 1px solid #DDD;
 }
 
 .message .metadata {
 	float: left;
 	width: 14em;
-	margin: 0 0 1em -15em;
+	margin: 0 0 0 -15em;
 	font-size: 80%;
 	color: gray;
 	text-align: right;

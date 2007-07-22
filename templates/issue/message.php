@@ -6,5 +6,5 @@
 	<?php } ?>
 	<?php ee(date('F jS, Y', strtotime($posted))) ?><br>
 	</div>
-	<div class="content"><pre><?php echo $current_row == 0 ? format_report($message) : e($message) ?></pre></div>
+	<div class="content"><?php echo format_message($message, $current_row == 0) ?></div>
 </div>
