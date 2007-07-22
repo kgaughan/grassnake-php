@@ -13,6 +13,7 @@ Projects
 		<thead>
 			<tr>
 				<th>Project</th>
+				<th width="20%">Lead</th>
 				<th class="numeric" width="6%">Issues</th>
 				<th class="numeric" width="5%">Open</th>
 				<th class="numeric" width="9%">Suspended</th>
@@ -27,6 +28,7 @@ Projects
 			<?php foreach ($projects as $r) { ?>
 			<tr>
 				<td><a href="<?php echo $r['id'] ?>"><?php ee($r['project']) ?></a></td>
+				<td><?php ee(Users::get($r['lead_user_id'])->get_username()) ?></td>
 				<td class="numeric"><?php echo $r['issues'] ?></td>
 				<?php $count += $r['issues'] ?>
 				<td class="numeric"><?php echo $r['open'] ?></td>
@@ -38,7 +40,7 @@ Projects
 		</tbody>
 		<tfoot>
 			<tr>
-				<th>Totals</th>
+				<th colspan="2">Totals</th>
 				<td class="numeric"><?php echo $count ?></td>
 				<td class="numeric"><?php echo $open ?></td>
 				<td class="numeric"><?php echo $suspended ?></td>

@@ -12,6 +12,7 @@ class Projects {
 
 		return $db->query_all("
 			SELECT		projects.id, project,
+						lead_user_id,
 						COUNT(issues.id) AS issues,
 						COALESCE(SUM(resolution_id IN (0, 1)), 0) AS open,
 						COALESCE(SUM(resolution_id = 2), 0) AS suspended
@@ -26,6 +27,12 @@ class Projects {
 		global $db;
 
 		return $db->query_value("SELECT project FROM projects WHERE id = %d", $id);
+	}
+
+	public static function get_lead($id) {
+		global $db;
+
+		return $db->query_value("SELECT lead_user_id FROM project WHERE id = %d", $id);
 	}
 }
 ?>
