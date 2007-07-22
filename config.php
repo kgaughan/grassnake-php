@@ -42,7 +42,7 @@ function init() {
 		$db->set_logger(new DB_BasicLogger);
 	}
 
-	AFK_User::set_implementation('TrackerUser');
+	AFK_User::set_implementation('IPTrackerUser');
 
 	return array();
 }

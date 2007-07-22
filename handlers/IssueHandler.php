@@ -23,6 +23,8 @@ class IssueHandler extends AFK_HandlerBase {
 	}
 
 	public function on_post(AFK_Context $ctx) {
+		AFK_User::prerequisites('post');
+
 		if ($ctx->id != '') {
 			$issue = Issues::get_details($ctx->id);
 			if (!$issue) {

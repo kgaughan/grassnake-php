@@ -27,9 +27,10 @@ secondly, grass snakes eat bugs.</p>
 <p>Most of the influence other bugtrackers had on GrassSnake was negative.
 A lot of the UI and design choices I made were motivated by things I
 strongly disliked about the bug trackers I&rsquo;ve used. Its strongest
-anti-inspirations are <cite>Bugzilla</cite> and <cite>phpBugTracker</cite>,
-both of which have terribly obtuse UIs. Most of the other open source
-issue trackers aren&rsquo;t much better. Trac I remain puzzled by.</p>
+anti-inspirations are <cite title="A jet-powered Cessna">Bugzilla</cite>
+and <cite title="Same, with a foggy windscreen">phpBugTracker</cite>, both of
+which have terribly obtuse UIs. Most of the other open source issue trackers
+aren&rsquo;t much better. Trac I remain puzzled by.</p>
 
 <p>Minor influences were <cite>FogBugz</cite>, which I used for a while at
 one of my previous jobs and which I can barely remember anything about, and the

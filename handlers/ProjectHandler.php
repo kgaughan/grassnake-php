@@ -18,6 +18,8 @@ class ProjectHandler extends AFK_HandlerBase {
 	}
 
 	public function on_post(AFK_Context $ctx) {
+		AFK_User::prerequisites('post');
+
 		$ctx->allow_rendering(false);
 		if ($ctx->id == '') {
 			$ctx->redirect(303, Projects::add($ctx->name));

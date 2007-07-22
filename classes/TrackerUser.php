@@ -46,7 +46,7 @@ class TrackerUser extends AFK_User {
 		global $db;
 
 		if (!self::has(0)) {
-			self::add_instance(new TrackerUser(0, null, 'Anonymous Hero'));
+			self::add_instance(new TrackerUser(0, '---', 'Anonymous Hero'));
 		}
 
 		$db->query("SELECT id, email, name FROM users WHERE id IN (%s)", $ids);

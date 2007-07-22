@@ -36,6 +36,7 @@ Issues for <?php ee($name) ?>
 	</table>
 <?php } ?>
 
+<?php if (AFK_User::get_logged_in_user()->can('post')) { ?>
 <?php start_slot('sidebar') ?>
 <form method="post" action="">
 <fieldset>
@@ -73,3 +74,4 @@ Please provide any additional information below.
 </fieldset>
 </form>
 <?php end_slot() ?>
+<?php } ?>

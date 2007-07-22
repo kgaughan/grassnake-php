@@ -28,6 +28,7 @@
 	</tbody>
 </table>
 
+<?php if (AFK_User::get_logged_in_user()->can('post')) { ?>
 <form method="post" action="">
 <fieldset>
 <legend>New Message</legend>
@@ -57,4 +58,5 @@
 <input type="submit" value="Submit Message">
 </fieldset>
 </form>
+<?php } ?>
 <?php end_slot() ?>
