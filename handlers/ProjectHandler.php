@@ -25,7 +25,12 @@ class ProjectHandler extends AFK_HandlerBase {
 		if ($ctx->id == '') {
 			$ctx->redirect(303, Projects::add($ctx->name, $ctx->user));
 		} else {
-			Issues::add($ctx->id, $ctx->priority, $ctx->title, $ctx->message);
+			$id = Issues::add($ctx->id, $ctx->priority, $ctx->title, $ctx->message);
+			trigger_event('issue_posted', array(
+				'id'          => $id,
+				'title'       => $ctx->title,
+				'message'     => $ctx->message,
+				'priority'    => $ctx->priority));
 			$ctx->redirect(303);
 		}
 	}
