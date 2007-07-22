@@ -62,7 +62,7 @@ class Issues {
 	public static function add_message($id, $message) {
 		global $db;
 
-		$db->execute("
+		return $db->execute("
 			INSERT INTO messages (
 				issue_id, user_id, posted, message
 			) VALUES (
@@ -86,6 +86,11 @@ class Issues {
 		global $db;
 		$db->execute("DELETE FROM watches WHERE user_id = %d AND issue_id = %d",
 			Users::current()->get_id(), $id);
+	}
+
+	public static function get_watchers($id) {
+		global $db;
+		return $db->query_list("SELECT user_id FROM watches WHERE issue_id = %d", $id);
 	}
 
 	public static function update($id, $priority_id, $resolution_id, $assigned_user_id) {

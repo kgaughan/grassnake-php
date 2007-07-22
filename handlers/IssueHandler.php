@@ -32,6 +32,13 @@ class IssueHandler extends AFK_HandlerBase {
 			}
 			Issues::add_message($ctx->id, $ctx->message);
 			Issues::update($ctx->id, $ctx->priority, $ctx->resolution, $ctx->user);
+
+			trigger_event('message_posted', array(
+				'old_details' => $issue,
+				'message'     => $ctx->message,
+				'priority'    => $ctx->priority,
+				'resolution'  => $ctx->resolution,
+				'user'        => $ctx->user));
 		}
 		$ctx->allow_rendering(false);
 		$ctx->redirect();

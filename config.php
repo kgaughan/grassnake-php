@@ -30,7 +30,7 @@ function init() {
 
 	error_reporting(E_ALL);
 	date_default_timezone_set('UTC');
-	AFK::load_helper('core', 'html', 'slots');
+	AFK::load_helper('core', 'html', 'slots', 'events');
 
 	if (defined('DB_NAME') && DB_NAME != '') {
 		$db = new DB_MySQL(DB_HOST, DB_USER, DB_PASS, DB_NAME);
