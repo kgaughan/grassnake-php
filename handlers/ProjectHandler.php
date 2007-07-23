@@ -2,17 +2,17 @@
 class ProjectHandler extends AFK_HandlerBase {
 
 	public function on_get(AFK_Context $ctx) {
-		if ($ctx->id == '') {
-			$ctx->projects = Projects::get_active();
+		if ($ctx->pid == '') {
+			$ctx->projects = Projects::get_active_details();
 			$ctx->devs = Users::get_developers();
 			$ctx->page_title = 'Active Projects';
 			$ctx->change_view('list');
 		} else {
-			$ctx->name = Projects::get_name($ctx->id);
+			$ctx->name = Projects::get_name($ctx->pid);
 			if (!$ctx->name) {
 				$ctx->not_found('No such project.');
 			}
-			$ctx->issues = Issues::get_all_for_project($ctx->id);
+			$ctx->issues = Issues::get_all_for_project($ctx->pid);
 			Users::preload(collect_column($ctx->issues, 'assigned_user_id'));
 			$ctx->page_title = $ctx->name;
 		}
@@ -22,18 +22,9 @@ class ProjectHandler extends AFK_HandlerBase {
 		Users::prerequisites('post');
 
 		$ctx->allow_rendering(false);
-		if ($ctx->id == '') {
+		if ($ctx->pid == '') {
 			$ctx->name = trim($ctx->name);
 			$ctx->redirect(303, Projects::add($ctx->name, $ctx->user));
-		} else {
-			$ctx->title = trim($ctx->title);
-			$id = Issues::add($ctx->id, $ctx->priority, $ctx->title, $ctx->message);
-			trigger_event('issue_posted', array(
-				'id'          => $id,
-				'title'       => $ctx->title,
-				'message'     => $ctx->message,
-				'priority'    => $ctx->priority));
-			$ctx->redirect(303);
 		}
 	}
 }

@@ -12,14 +12,14 @@ function routes() {
 	$r->route('/',      array('_handler' => 'Root', '_view' => 'console'));
 	$r->route('/about', array('_handler' => 'Root', '_view' => 'about'));
 
-	$r->route('/projects/{id}', array('_handler' => 'Project'), array('id' => '\d*'));
-	$r->route('/issues/{id}',   array('_handler' => 'Issue'),   array('id' => '\d*'));
+	$r->route('/projects/{pid}', array('_handler' => 'Project'), array('pid' => '\d*'));
+	$r->route('/issues/{iid}',   array('_handler' => 'Issue'),   array('iid' => '\d*'));
 
 	$r->route('/watches/',
 		array('_handler' => 'Watch', '_view' => 'new'));
-	$r->route('/watches/{id}',
+	$r->route('/watches/{iid}',
 		array('_handler' => 'Watch', '_view' => 'watch'),
-		array('id' => '\d+'));
+		array('iid' => '\d+'));
 
 	$r->fallback(array('_handler' => 'AFK_Default'));
 	return $r;

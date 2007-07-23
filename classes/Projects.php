@@ -10,6 +10,16 @@ class Projects {
 	public static function get_active() {
 		global $db;
 
+		return $db->query_map("
+			SELECT		projects.id, project
+			FROM		projects
+			WHERE		is_active = 1
+			ORDER BY	project ASC");
+	}
+
+	public static function get_active_details() {
+		global $db;
+
 		return $db->query_all("
 			SELECT		projects.id, project,
 						lead_user_id,

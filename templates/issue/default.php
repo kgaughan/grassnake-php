@@ -6,7 +6,7 @@
 <?php ee($title) ?>
 <?php end_slot() ?>
 
-<h1><span>Issue #<?php echo $id ?> (<?php ee($project) ?>):</span> <?php ee($title) ?></h1>
+<h1><span>Issue #<?php echo $iid ?> (<?php ee($project) ?>):</span> <?php ee($title) ?></h1>
 
 <?php $this->render_each('message', $messages) ?>
 

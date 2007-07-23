@@ -38,40 +38,6 @@ Issues for <?php ee($name) ?>
 
 <?php if (Users::current()->can('post')) { ?>
 <?php start_slot('sidebar') ?>
-<form method="post" action="">
-<fieldset>
-<legend>New Issue</legend>
-<table>
-	<tr>
-		<th><label for="title">Title</label></th>
-		<td><input type="text" name="title" id="title" value=""></td>
-	</tr>
-	<tr>
-		<td colspan="2"><textarea name="message" rows="15">
-What steps will reproduce the problem?
-1.
-2.
-3.
-
-What is the expected output? What do you see instead?
-
-
-What version of the product are you using? On what operating system?
-
-
-Please provide any additional information below.
-</textarea></td>
-	</tr>
-	<tr>
-		<th>Type</th>
-		<td>
-			<label><input type="radio" name="priority" value="4" checked="checked"> Bug</label>
-			<label><input type="radio" name="priority" value="1"> Enhancement</label>
-		</td>
-	</tr>
-</table>
-<input type="submit" value="Submit Issue">
-</fieldset>
-</form>
+<?php $this->render('new-issue') ?>
 <?php end_slot() ?>
 <?php } ?>

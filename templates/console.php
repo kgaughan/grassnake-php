@@ -55,3 +55,9 @@
 <?php } else { ?>
 	<p>You have no watches.</p>
 <?php } ?>
+
+<?php if (Users::current()->can('post')) { ?>
+<?php start_slot('sidebar') ?>
+<?php $this->render('new-issue') ?>
+<?php end_slot() ?>
+<?php } ?>

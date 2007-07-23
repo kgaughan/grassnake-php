@@ -34,3 +34,9 @@ All Issues
 		</tbody>
 	</table>
 <?php } ?>
+
+<?php if (Users::current()->can('post')) { ?>
+<?php start_slot('sidebar') ?>
+<?php $this->render('new-issue') ?>
+<?php end_slot() ?>
+<?php } ?>
