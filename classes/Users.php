@@ -13,12 +13,23 @@ class Users extends AFK_Users {
 		return $devs;
 	}
 
+	protected function get_current_user_id() {
+		global $db;
+		static $id = null;
+
+		if (is_null($id)) {
+			$id = $db->query_value("SELECT user_id FROM user_ips WHERE ip = %u",
+				ip2long($_SERVER['REMOTE_ADDR']));
+			if (is_null($id)) {
+				$id = 0;
+			}
+		}
+
+		return $id;
+	}
+
 	protected function load($ids) {
 		global $db;
-
-		if (!$this->has(0)) {
-			$this->add(new User(0, '---', 'Anonymous Hero'));
-		}
 
 		$db->query("SELECT id, email, name FROM users WHERE id IN (%s)", $ids);
 		while ($r = $db->fetch()) {

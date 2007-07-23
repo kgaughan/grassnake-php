@@ -39,7 +39,7 @@ function init() {
 
 	session_start();
 
-	AFK_Users::set_implementation(new IPUsers());
+	AFK_Users::set_implementation(new Users());
 
 	return array();
 }

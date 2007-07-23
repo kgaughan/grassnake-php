@@ -5,7 +5,7 @@ CREATE TABLE projects (
     lead_user_id INTEGER     NOT NULL,
 
     PRIMARY KEY  (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE issues (
     id               INTEGER      NOT NULL AUTO_INCREMENT,
@@ -19,7 +19,7 @@ CREATE TABLE issues (
     PRIMARY KEY  (id),
     INDEX ix_project (project_id, assigned_user_id),
     INDEX ix_user (assigned_user_id, project_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE resolutions (
     id         TINYINT  NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE resolutions (
     ordering   TINYINT  NOT NULL,
 
     PRIMARY KEY  (id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO resolutions VALUES (0, 'Untriaged',              1, 0);
 INSERT INTO resolutions VALUES (1, 'Open',                   1, 10);
@@ -44,7 +44,7 @@ CREATE TABLE priorities (
     ordering TINYINT  NOT NULL,
 
     PRIMARY KEY (id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO priorities VALUES (1, 'Enhancement', 99);
 INSERT INTO priorities VALUES (2, 'Critical',    5);
@@ -59,7 +59,7 @@ CREATE TABLE watches (
 
     PRIMARY KEY (user_id, issue_id),
     INDEX ix_issue (issue_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE messages (
     id       INTEGER  NOT NULL AUTO_INCREMENT,
@@ -70,20 +70,25 @@ CREATE TABLE messages (
 
     PRIMARY KEY (id),
     KEY ix_issue (issue_id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE users (
     id     INTEGER          NOT NULL AUTO_INCREMENT,
     email  VARCHAR(128)     NOT NULL,
     pwd    CHAR(40)         NOT NULL,
-    ip     INTEGER UNSIGNED NULL,
     name   VARCHAR(128)     NOT NULL,
     is_dev TINYINT          NOT NULL DEFAULT 0,
 
     PRIMARY KEY (id),
     INDEX ix_email (email),
-    INDEX ix_ip (ip)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE user_ips (
+    ip      INTEGER UNSIGNED NOT NULL,
+    user_id INTEGER NOT NULL,
+
+    PRIMARY KEY  (ip)
+) ENGINE=InnoDB;
 
 INSERT INTO users VALUES (
 	1,
