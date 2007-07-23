@@ -16,6 +16,7 @@ Projects
 				<th width="20%">Lead</th>
 				<th class="numeric" width="6%">Issues</th>
 				<th class="numeric" width="5%">Open</th>
+				<th class="numeric" width="8%">Untriaged</th>
 				<th class="numeric" width="9%">Suspended</th>
 			</tr>
 		</thead>
@@ -23,6 +24,7 @@ Projects
 			<?php
 			$count = 0;
 			$open = 0;
+			$untriaged = 0;
 			$suspended = 0;
 			?>
 			<?php foreach ($projects as $r) { ?>
@@ -33,6 +35,8 @@ Projects
 				<?php $count += $r['issues'] ?>
 				<td class="numeric"><?php echo $r['open'] ?></td>
 				<?php $open += $r['open'] ?>
+				<td class="numeric"><?php echo $r['untriaged'] ?></td>
+				<?php $untriaged += $r['untriaged'] ?>
 				<td class="numeric"><?php echo $r['suspended'] ?></td>
 				<?php $suspended += $r['suspended'] ?>
 			</tr>
@@ -43,6 +47,7 @@ Projects
 				<th colspan="2">Totals</th>
 				<td class="numeric"><?php echo $count ?></td>
 				<td class="numeric"><?php echo $open ?></td>
+				<td class="numeric"><?php echo $untriaged ?></td>
 				<td class="numeric"><?php echo $suspended ?></td>
 			</tr>
 		</tfoot>

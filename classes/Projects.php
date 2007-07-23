@@ -14,7 +14,8 @@ class Projects {
 			SELECT		projects.id, project,
 						lead_user_id,
 						COUNT(issues.id) AS issues,
-						COALESCE(SUM(resolution_id IN (0, 1)), 0) AS open,
+						COALESCE(SUM(resolution_id IN (0, 1, 2)), 0) AS open,
+						COALESCE(SUM(resolution_id = 0), 0) AS untriaged,
 						COALESCE(SUM(resolution_id = 2), 0) AS suspended
 			FROM		projects
 			LEFT JOIN	issues ON issues.project_id = projects.id
