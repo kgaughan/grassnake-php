@@ -80,9 +80,9 @@ CREATE TABLE users (
     name   VARCHAR(128)     NOT NULL,
     is_dev TINYINT          NOT NULL DEFAULT 0,
 
-	PRIMARY KEY (id),
-	INDEX ix_email (email),
-	INDEX ix_ip (ip)
+    PRIMARY KEY (id),
+    INDEX ix_email (email),
+    INDEX ix_ip (ip)
 );
 
 INSERT INTO users VALUES (
@@ -90,5 +90,6 @@ INSERT INTO users VALUES (
 	'keith@talideon.com',
 	CONCAT(MD5(CONCAT('xyzzy1', 'vdg3dfg*')), 'vdg3dfg*'),
 	NULL,
-	'Keith Gaughan'
+	'Keith Gaughan',
+	1
 );

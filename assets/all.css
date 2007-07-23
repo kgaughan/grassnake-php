@@ -81,8 +81,9 @@ table.data th, table.data td {
 }
 
 table.data th {
-	background: black;
+	background: black url(images/shadow.png) bottom left repeat-x;
 	color: orange;
+	padding-bottom: 0.5ex;
 }
 
 table.data thead th {
@@ -95,6 +96,10 @@ table.data thead th + th {
 
 table.data tfoot th {
 	text-align: right;
+}
+
+table.data tfoot th, table.data tfoot td {
+	border-bottom: none;
 }
 
 th, td {

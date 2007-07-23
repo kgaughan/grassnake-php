@@ -44,16 +44,12 @@ the better issue trackers out there.</p>
 <p>A few things:</p>
 
 <ul>
-<li>AFK has an implicit invocation system built into it. I want to get
-    GrassSnake to use it to expose various event for plug-ins to respond to.
-    This would mean that things which don&rsquo;t need to be part of the
-    core could be pluggable, such as mailing people watching an issue when
-	it&rsquo;s updated.</li>
 <li>It would be nice to use my remoting code for sending the watch/unwatch
-    requests back to the server, though it&rsquo; hardly necessary.</li>
+    requests back to the server, though it&rsquo;s hardly necessary.</li>
 <li>I need to write the search code.</li>
 <li>Issue merging.</li>
-<li>An actual admin backend of some kind.</li>
+<li>An actual admin backend of some kind, but this&rsquo;d be a separate
+    application, most likely restricted to user management.</li>
 </ul>
 
 <h2>Is there anything GrassSnake is definitely never going to do?</h2>

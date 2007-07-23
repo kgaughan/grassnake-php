@@ -23,8 +23,7 @@ class Issues {
 			JOIN		priorities  ON priorities.id    = priority_id
 			JOIN		resolutions ON resolutions.id   = resolution_id
 			JOIN		messages    ON issues.id        = messages.issue_id
-			LEFT JOIN	watches		ON watches.issue_id = issues.id
-			WHERE		watches.user_id = %d OR watches.user_id IS NULL
+			LEFT JOIN	watches		ON watches.issue_id = issues.id AND watches.user_id = %d
 			GROUP BY	issues.id
 			ORDER BY	issues.id ASC
 			", Users::current()->get_id());
@@ -111,11 +110,11 @@ class Issues {
 			JOIN		priorities  ON priorities.id    = priority_id
 			JOIN		resolutions ON resolutions.id   = resolution_id
 			JOIN		messages    ON issues.id        = messages.issue_id
-			LEFT JOIN	watches		ON watches.issue_id = issues.id
-			WHERE		project_id = %d AND (watches.user_id = %d OR watches.user_id IS NULL)
+			LEFT JOIN	watches		ON watches.issue_id = issues.id AND watches.user_id = %d
+			WHERE		project_id = %d
 			GROUP BY	issues.id
 			ORDER BY	is_open DESC, issues.id ASC
-			", $id, Users::current()->get_id());
+			", Users::current()->get_id(), $id);
 	}
 }
 ?>
