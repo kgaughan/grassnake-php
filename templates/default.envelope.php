@@ -22,6 +22,7 @@
 
 <div id="body">
 <div id="sidebar">
+<?php /*
 <form method="post" action="<?php ee($ctx->application_root()) ?>issues/">
 <fieldset>
 <legend>Search</legend>
@@ -40,6 +41,7 @@ for
 <input type="submit" value="Search">
 </fieldset>
 </form>
+ */ ?>
 <?php get_slot('sidebar') ?>
 </div>
 
