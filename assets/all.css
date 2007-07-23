@@ -9,6 +9,10 @@ body, h1, h2, h3, h4, h5, h6 {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+img, input, select {
+	vertical-align: middle;
+}
+
 h1 {
 	font-size: 200%;
 	font-weight: normal;

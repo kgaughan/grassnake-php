@@ -14,7 +14,7 @@ Issues for <?php ee($name) ?>
 		<thead>
 			<tr>
 				<th class="numeric" width="5%">#</th>
-				<th width="13">&nbsp;</th>
+				<th width="13"><img src="../assets/images/eye.png" width="13" height="13" alt="Watches" title="Watches"></th>
 				<th>Title</th>
 				<th width="10%">Priority</th>
 				<th width="10%">Resolution</th>
