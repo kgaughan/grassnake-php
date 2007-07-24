@@ -5,7 +5,7 @@ class User extends AFK_User {
 	private $name;
 
 	public function __construct($id, $email, $name) {
-		parent::__construct($id, $email);
+		parent::__construct($id, $name);
 		$this->email = $email;
 		$this->name = $name;
 	}

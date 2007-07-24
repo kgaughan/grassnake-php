@@ -3,7 +3,7 @@ h1 {
 }
 
 #body {
-	padding: 0 32em 0 1em;
+	padding: 0 32em 2em 1em;
 }
 
 #nav {
@@ -14,15 +14,27 @@ h1 {
 	padding: 0.25ex 0.5ex 0.65ex 0.5ex;
 }
 
-#nav a {
+#nav a, address a {
 	color: white;
 	text-decoration: none;
 }
 
-#nav a:hover {
+#nav a:hover, address a:hover {
 	text-decoration: underline;
 }
 
+address {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 75%;
+	padding: 0.25ex 0.5ex;
+	background: black url(images/shadow.png) top left repeat-x;
+	font-weight: bold;
+	color: orange;
+	font-style: normal;
+}
 form table {
 	border-collapse: collapse;
 	width: 100%;

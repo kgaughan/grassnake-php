@@ -13,7 +13,7 @@ class RootHandler extends AFK_HandlerBase {
 			JOIN		priorities  ON priorities.id  = priority_id
 			JOIN		resolutions ON resolutions.id = resolution_id
 			WHERE		is_open = 1 AND assigned_user_id = %d
-			ORDER BY	priorities.ordering DESC
+			ORDER BY	priorities.ordering DESC, last_updated DESC
 			", $user_id);
 
 		$ctx->watches = $db->query_all('

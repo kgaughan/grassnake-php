@@ -48,4 +48,12 @@ for
 <?php echo $generated_content ?>
 </div>
 
+<address>
+Copyright &copy; <a href="http://talideon.com/">Keith Gaughan</a>, 2007.
+All Rights Reserved.
+Issue resolution may fall as well as rise.
+Terms and conditions may apply.
+GrassSnake is regulated by the Issue Tracking Regulator.
+</address>
+
 </body></html>
