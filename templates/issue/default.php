@@ -38,11 +38,11 @@
 	</tr>
 	<tr>
 		<th><label for="priority">Priority</label></th>
-		<td><?php select('priority', $priorities, $priority_id) ?></td>
+		<td><?php select_box('priority', $priorities, $priority_id) ?></td>
 	</tr>
 	<tr>
 		<th><label for="resolution">Resolution</label></th>
-		<td><?php select('resolution', $resolutions, $resolution_id) ?></td>
+		<td><?php select_box('resolution', $resolutions, $resolution_id) ?></td>
 	</tr>
 	<tr>
 		<th><label for="user">Owned by</label></th>

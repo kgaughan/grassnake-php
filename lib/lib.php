@@ -1,14 +1,4 @@
 <?php
-function collect_column($rs, $name) {
-	$values = array();
-	foreach ($rs as $r) {
-		if ($r[$name] != '') {
-			$values[] = $r[$name];
-		}
-	}
-	return array_unique($values);
-}
-
 function echo_username($id=null) {
 	if ($id == '') {
 		echo '&mdash;';
@@ -23,23 +13,6 @@ function echo_username($id=null) {
 			echo '</a>';
 		}
 	}
-}
-
-function echo_title() {
-	$args = func_get_args();
-	echo implode(' - ', array_filter(array_map('e', $args)));
-}
-
-function select($name, $elements, $default=null) {
-	echo '<select name="', e($name), '" id="', e($name), '">';
-	foreach ($elements as $k=>$v) {
-		echo '<option';
-		if ($k == $default) {
-			echo ' selected="selected"';
-		}
-		echo ' value="', e($k), '">', e($v), '</option>';
-	}
-	echo '</select>';
 }
 
 function format_message($message, $is_report) {

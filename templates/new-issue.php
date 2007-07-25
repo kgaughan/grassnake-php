@@ -8,7 +8,7 @@
 <?php if (!isset($pid)) { ?>
 	<tr>
 		<th><label for="pid">Project</label></th>
-		<td><?php select('pid', Projects::get_active()) ?></td>
+		<td><?php select_box('pid', Projects::get_active()) ?></td>
 	</tr>
 <?php } ?>
 	<tr>
