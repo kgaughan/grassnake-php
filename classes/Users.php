@@ -25,6 +25,10 @@ class Users extends AFK_Users {
 			}
 		}
 
+		if ($id == 0) {
+			$this->require_auth();
+		}
+
 		return $id;
 	}
 

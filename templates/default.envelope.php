@@ -14,7 +14,12 @@
 <?php get_slot('breadcrumbs') ?>
 </span>
 
-<?php ee(Users::current()->get_username()) ?> |
+<?php
+$user = Users::current();
+if (!is_null($user)) {
+	ee($user->get_username(), ' | ');
+}
+?>
 <a href="<?php ee($ctx->application_root()) ?>about">About</a> |
 <a href="<?php ee($ctx->application_root()) ?>projects/">Projects</a> |
 <a href="<?php ee($ctx->application_root()) ?>issues/">Issues</a>
