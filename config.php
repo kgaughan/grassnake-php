@@ -37,8 +37,6 @@ function init() {
 		$db->set_logger(new DB_BasicLogger);
 	}
 
-	session_start();
-
 	AFK_Users::set_implementation(new Users());
 
 	return array();
