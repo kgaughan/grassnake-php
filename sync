@@ -9,7 +9,7 @@ REMOTE="%%USER%%@%%SERVER%%:%%APPLICATION_PATH%%"
 if [ "$1" = "lint" ]; then
 	echo "Please wait, checking PHP code in project for syntax errors..."
 	for i in `find $HERE -name \*.php`; do
-		if ! php -l "$i" >/dev/null; then
+		if ! php -l "$i"; then
 			exit 255
 		fi
 	done

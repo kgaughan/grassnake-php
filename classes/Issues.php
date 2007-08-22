@@ -4,7 +4,9 @@ class Issues {
 	public static function add($project_id, $priority_id, $title, $message) {
 		global $db;
 
-		$id = $db->insert('issues', compact('project_id', 'title', 'priority_id'));
+		$assigned_user_id = Projects::get_lead($project_id);
+		$id = $db->insert('issues',
+			compact('project_id', 'title', 'priority_id', 'assigned_user_id'));
 		self::add_message($id, $message);
 		self::watch($id);
 
@@ -92,6 +94,16 @@ class Issues {
 		return $db->query_list("SELECT user_id FROM watches WHERE issue_id = %d", $id);
 	}
 
+	public static function translate_resolution($id) {
+		global $db;
+		return $db->query_value("SELECT resolution FROM resolutions WHERE id = %d", $id);
+	}
+
+	public static function translate_priority($id) {
+		global $db;
+		return $db->query_value("SELECT priority FROM priorities WHERE id = %d", $id);
+	}
+
 	public static function update($id, $priority_id, $resolution_id, $assigned_user_id) {
 		global $db;
 		$db->update('issues',
@@ -113,7 +125,7 @@ class Issues {
 			LEFT JOIN	watches		ON watches.issue_id = issues.id AND watches.user_id = %d
 			WHERE		project_id = %d
 			GROUP BY	issues.id
-			ORDER BY	is_open DESC, issues.id ASC
+			ORDER BY	is_open DESC, priorities.ordering ASC, issues.id ASC
 			", Users::current()->get_id(), $id);
 	}
 }

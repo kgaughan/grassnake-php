@@ -31,10 +31,12 @@ class IssueHandler extends AFK_HandlerBase {
 			$ctx->title = trim($ctx->title);
 			$iid = Issues::add($ctx->pid, $ctx->priority, $ctx->title, $ctx->message);
 			trigger_event('issue_posted', array(
-				'iid'         => $iid,
+				'project'     => Projects::get_name($ctx->pid),
 				'title'       => $ctx->title,
 				'message'     => $ctx->message,
-				'priority'    => $ctx->priority));
+				'project_id'  => $ctx->pid,
+				'issue_id'    => $iid,
+				'priority_id' => $ctx->priority));
 			$ctx->redirect(303, $ctx->HTTP_REFERER);
 		} elseif ($ctx->iid != '') {
 			// Posting a message to an issue or altering its status.
@@ -43,22 +45,29 @@ class IssueHandler extends AFK_HandlerBase {
 				$ctx->not_found('No such issue.');
 			}
 			Issues::update($ctx->iid, $ctx->priority, $ctx->resolution, $ctx->user);
-			if (trim($ctx->message != '')) {
+			if (trim($ctx->message) != '') {
 				Issues::add_message($ctx->iid, $ctx->message);
 				trigger_event('message_posted', array(
-					'old_details' => $issue,
-					'message'     => $ctx->message,
-					'priority'    => $ctx->priority,
-					'resolution'  => $ctx->resolution,
-					'user'        => $ctx->user));
+					'project'          => $issue['project'],
+					'title'            => $issue['title'],
+					'message'          => $ctx->message,
+					'issue_id'         => $ctx->iid,
+					'priority_id'      => $ctx->priority,
+					'resolution_id'    => $ctx->resolution,
+					'assigned_user_id' => $ctx->user));
 			} elseif ($ctx->priority != $issue['priority_id'] ||
 					$ctx->resolution != $issue['resolution_id'] ||
 					$ctx->user != $issue['assigned_user_id']) {
 				trigger_event('issue_status_changed', array(
-					'old_details' => $issue,
-					'priority'    => $ctx->priority,
-					'resolution'  => $ctx->resolution,
-					'user'        => $ctx->user));
+					'project'              => $issue['project'],
+					'title'                => $issue['title'],
+					'issue_id'             => $ctx->iid,
+					'old_priority_id'      => $issue['priority_id'],
+					'old_resolution_id'    => $issue['resolution_id'],
+					'old_assigned_user_id' => $issue['assigned_user_id'],
+					'priority_id'          => $ctx->priority,
+					'resolution_id'        => $ctx->resolution,
+					'assigned_user_id'     => $ctx->user));
 			}
 			$ctx->redirect();
 		}
