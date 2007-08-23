@@ -43,7 +43,7 @@ class Projects {
 	public static function get_lead($id) {
 		global $db;
 
-		return $db->query_value("SELECT lead_user_id FROM project WHERE id = %d", $id);
+		return $db->query_value("SELECT lead_user_id FROM projects WHERE id = %d", $id);
 	}
 }
 ?>

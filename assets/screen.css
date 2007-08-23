@@ -14,6 +14,10 @@ h1 {
 	padding: 0.25ex 0.5ex 0.65ex 0.5ex;
 }
 
+a img {
+	border: none;
+}
+
 #nav a, address a {
 	color: white;
 	text-decoration: none;
