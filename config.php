@@ -4,7 +4,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'grasssnake');
 
-define('APP_VERSION', '0.0.0');
+define('APP_VERSION', '0.2.0');
 
 function routes() {
 	$r = new AFK_Routes();
