@@ -33,7 +33,7 @@ _____________________________________________________________________________
 $message
 _____________________________________________________________________________
 
-   Issue #  $issue_id
+    Issue#  $issue_id <$url>
  Posted by  $name
   Priority  $priority
 LEFIN;
@@ -64,7 +64,7 @@ _____________________________________________________________________________
 $message
 _____________________________________________________________________________
 
-   Issue #  $issue_id
+    Issue#  $issue_id <$url>
  Posted by  $name
   Priority  $priority
 Resolution  $resolution
@@ -110,7 +110,7 @@ $who made the following changes:
 $email
 _____________________________________________________________________________
 
-   Issue #  $issue_id
+    Issue#  $issue_id <$url>
 LEFIN;
 
 		$this->mail(

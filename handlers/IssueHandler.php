@@ -36,7 +36,8 @@ class IssueHandler extends AFK_HandlerBase {
 				'message'     => $ctx->message,
 				'project_id'  => $ctx->pid,
 				'issue_id'    => $iid,
-				'priority_id' => $ctx->priority));
+				'priority_id' => $ctx->priority,
+				'url'         => $ctx->resolve("issues/$iid")));
 			$ctx->redirect(303, $ctx->HTTP_REFERER);
 		} elseif ($ctx->iid != '') {
 			// Posting a message to an issue or altering its status.
@@ -54,7 +55,8 @@ class IssueHandler extends AFK_HandlerBase {
 					'issue_id'         => $ctx->iid,
 					'priority_id'      => $ctx->priority,
 					'resolution_id'    => $ctx->resolution,
-					'assigned_user_id' => $ctx->user));
+					'assigned_user_id' => $ctx->user,
+					'url'              => $ctx->resolve("issues/{$ctx->iid}")));
 			} elseif ($ctx->priority != $issue['priority_id'] ||
 					$ctx->resolution != $issue['resolution_id'] ||
 					$ctx->user != $issue['assigned_user_id']) {
@@ -67,7 +69,8 @@ class IssueHandler extends AFK_HandlerBase {
 					'old_assigned_user_id' => $issue['assigned_user_id'],
 					'priority_id'          => $ctx->priority,
 					'resolution_id'        => $ctx->resolution,
-					'assigned_user_id'     => $ctx->user));
+					'assigned_user_id'     => $ctx->user,
+					'url'                  => $ctx->resolve("issues/{$ctx->iid}")));
 			}
 			$ctx->redirect();
 		}
