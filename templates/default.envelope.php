@@ -3,6 +3,7 @@
 <html lang="en"><head>
 
 	<title><?php echo_title($page_title, 'GrassSnake') ?></title>
+	<link rel="shortcut icon" type="image/x-icon" href="<?php ee($ctx->application_root()) ?>favicon.ico">
 	<?php stylesheets() ?>
 
 </head><body>

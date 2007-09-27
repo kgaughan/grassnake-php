@@ -11,4 +11,3 @@ foreach ($devs as $dev) {
 	echo '>', e($dev->get_username()), '</option>';
 }
 echo '</select>';
-?>

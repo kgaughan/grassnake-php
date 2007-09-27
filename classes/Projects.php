@@ -46,4 +46,3 @@ class Projects {
 		return $db->query_value("SELECT lead_user_id FROM projects WHERE id = %d", $id);
 	}
 }
-?>

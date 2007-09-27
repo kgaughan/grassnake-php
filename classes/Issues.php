@@ -128,5 +128,23 @@ class Issues {
 			ORDER BY	is_open DESC, priorities.ordering ASC, issues.id ASC
 			", Users::current()->get_id(), $id);
 	}
+
+	public function get_resolutions() {
+		global $db;
+
+		return $db->query_map("
+			SELECT id, resolution
+			FROM resolutions
+			ORDER BY ordering ASC");
+	}
+
+	public function get_priorities() {
+		global $db;
+
+		return $db->query_map("
+			SELECT	id, priority
+			FROM	priorities
+			ORDER BY ordering ASC");
+	}
+
 }
-?>

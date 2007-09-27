@@ -15,4 +15,3 @@ class WatchHandler extends AFK_HandlerBase {
 		$ctx->redirect(303, $ctx->HTTP_REFERER);
 	}
 }
-?>

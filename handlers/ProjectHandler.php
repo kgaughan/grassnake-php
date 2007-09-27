@@ -28,4 +28,3 @@ class ProjectHandler extends AFK_HandlerBase {
 		}
 	}
 }
-?>

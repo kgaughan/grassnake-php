@@ -43,4 +43,3 @@ class Users extends AFK_Users {
 		}
 	}
 }
-?>

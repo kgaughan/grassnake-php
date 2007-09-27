@@ -36,4 +36,3 @@ class User extends AFK_User {
 		return 1;
 	}
 }
-?>

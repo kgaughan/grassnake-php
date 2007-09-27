@@ -33,4 +33,3 @@ class RootHandler extends AFK_HandlerBase {
 		$ctx->page_title = 'About';
 	}
 }
-?>

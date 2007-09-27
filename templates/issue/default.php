@@ -29,6 +29,7 @@
 </table>
 
 <?php if (Users::current()->can('post')) { ?>
+<?php $devs = Users::get_developers() ?>
 <form method="post" action="">
 <fieldset>
 <legend>New Message</legend>
@@ -38,11 +39,11 @@
 	</tr>
 	<tr>
 		<th><label for="priority">Priority</label></th>
-		<td><?php select_box('priority', $priorities, $priority_id) ?></td>
+		<td><?php select_box('priority', Issues::get_priorities(), $priority_id) ?></td>
 	</tr>
 	<tr>
 		<th><label for="resolution">Resolution</label></th>
-		<td><?php select_box('resolution', $resolutions, $resolution_id) ?></td>
+		<td><?php select_box('resolution', Issues::get_resolutions(), $resolution_id) ?></td>
 	</tr>
 	<tr>
 		<th><label for="user">Owned by</label></th>

@@ -69,7 +69,7 @@ CREATE TABLE messages (
     message  TEXT     NOT NULL,
 
     PRIMARY KEY (id),
-    KEY ix_issue (issue_id)
+    INDEX ix_issue (issue_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE users (
@@ -81,20 +81,19 @@ CREATE TABLE users (
 
     PRIMARY KEY (id),
     INDEX ix_email (email),
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE user_ips (
     ip      INTEGER UNSIGNED NOT NULL,
     user_id INTEGER NOT NULL,
 
     PRIMARY KEY  (ip)
-) ENGINE=InnoDB;
+) ENGINE=MyISAM;
 
 INSERT INTO users VALUES (
 	1,
 	'keith@talideon.com',
 	CONCAT(MD5(CONCAT('xyzzy1', 'vdg3dfg*')), 'vdg3dfg*'),
-	NULL,
 	'Keith Gaughan',
 	1
 );

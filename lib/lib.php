@@ -30,4 +30,3 @@ function format_report($message) {
 	$regex = '/^(\s*)(' . implode('|', $to_highlight) . ')\s*$/m';
 	return preg_replace($regex, "$1<strong>$2</strong>", e($message));
 }
-?>

@@ -16,4 +16,3 @@ if (file_exists(APP_ROOT . '/lib/lib.php')) {
 }
 
 AFK::process_request(routes(), init());
-?>
