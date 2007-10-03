@@ -38,7 +38,7 @@ function init() {
 
 	AFK_Users::set_implementation(new Users());
 
-	Plugin::load(APP_ROOT . '/plugins', array('mailer'));
+	AFK_Plugin::load(APP_ROOT . '/plugins', array('mailer'));
 
 	return array();
 }

@@ -7,7 +7,7 @@
  * All Rights Reserved.
  */
 
-class Talideon_Mailer extends Plugin {
+class Talideon_Mailer extends AFK_Plugin {
 
 	protected function get_events() {
 		return array(

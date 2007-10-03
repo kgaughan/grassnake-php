@@ -66,8 +66,8 @@ class IssueHandler extends AFK_HandlerBase {
 	private function save_issue($project_id, $priority_id, $title, $message) {
 		$issue_id = Issues::add($project_id, $priority_id, $title, $message);
 		$project = Projects::get_name($project_id);
-		$url = $this->to_uri("issues/$issue_id"));
-		trigger_event('issue_posted', compact('project', 'title', 'message', 'project_id', 'issue_id', 'priority_id', 'url');
+		$url = $this->to_uri("issues/$issue_id");
+		trigger_event('issue_posted', compact('project', 'title', 'message', 'project_id', 'issue_id', 'priority_id', 'url'));
 		return $issue_id;
 	}
 
