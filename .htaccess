@@ -1,7 +1,6 @@
 RewriteEngine On
-RewriteBase /~keith/development/grasssnake/
+RewriteBase /~keith/projects/grasssnake/
 RewriteRule ^assets/.*         -                [L]
-RewriteRule ^assets-fwk/.*     -                [L]
 RewriteRule ^favicon\.ico      -                [L]
 RewriteRule ^robots\.txt       -                [L]
 RewriteRule ^dispatch\.php/.*  -                [L]

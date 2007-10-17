@@ -5,7 +5,7 @@ CREATE TABLE projects (
     lead_user_id INTEGER     NOT NULL,
 
     PRIMARY KEY  (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE issues (
     id               INTEGER      NOT NULL AUTO_INCREMENT,
@@ -70,7 +70,25 @@ CREATE TABLE messages (
 
     PRIMARY KEY (id),
     INDEX ix_issue (issue_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE attachments (
+    id         INTEGER      NOT NULL AUTO_INCREMENT,
+    message_id INTEGER      NOT NULL,
+    size       INTEGER      NOT NULL,
+    filename   VARCHAR(255) NOT NULL,
+
+    PRIMARY KEY (id),
+    INDEX ix_message (message_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- Only needed if you have to store the attachments in the database.
+CREATE TABLE attachment_chunks (
+    attachment_id INTEGER    NOT NULL,
+    data          MEDIUMBLOB NOT NULL,
+
+    PRIMARY KEY (attachment_id)
+) ENGINE=MyISAM;
 
 CREATE TABLE users (
     id     INTEGER          NOT NULL AUTO_INCREMENT,
@@ -91,9 +109,9 @@ CREATE TABLE user_ips (
 ) ENGINE=MyISAM;
 
 INSERT INTO users VALUES (
-	1,
-	'keith@talideon.com',
-	CONCAT(MD5(CONCAT('xyzzy1', 'vdg3dfg*')), 'vdg3dfg*'),
-	'Keith Gaughan',
-	1
+    1,
+    'keith@talideon.com',
+    CONCAT(MD5(CONCAT('xyzzy1', 'vdg3dfg*')), 'vdg3dfg*'),
+    'Keith Gaughan',
+    1
 );
