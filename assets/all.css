@@ -133,3 +133,30 @@ th {
 	padding: 0 1em;
 	background-color: #FCFFF0;
 }
+
+.message {
+	overflow: hidden;
+	padding: 1em 1em 1em 12em;
+	border-bottom: 1px solid #DDD;
+}
+
+.message .metadata {
+	float: left;
+	width: 14em;
+	margin: 0 0 0 -15em;
+	font-size: 80%;
+	color: gray;
+	text-align: right;
+}
+
+.message pre {
+	margin: 0 0 1em 0;
+	overflow: auto;
+	width: 100%;
+}
+
+.first {
+	border-top: 1px solid #DDD;
+	background: #F8F8F8;
+	margin-top: 1em;
+}

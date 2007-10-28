@@ -32,7 +32,7 @@ class Users extends AFK_Users {
 		return $id;
 	}
 
-	protected function load($ids) {
+	protected function load(array $ids) {
 		global $db;
 
 		$db->query("SELECT id, email, name FROM users WHERE id IN (%s)", $ids);
