@@ -38,16 +38,16 @@ class IssueHandler extends AFK_HandlerBase {
 			if (!$issue) {
 				$ctx->not_found('No such issue.');
 			}
-			Issues::update($ctx->iid, $ctx->priority, $ctx->resolution, $ctx->user);
+			Issues::update($ctx->iid, $ctx->priority, $ctx->status, $ctx->user);
 			$data = array(
 				'project'              => $issue['project'],
 				'title'                => $issue['title'],
 				'issue_id'             => $ctx->iid,
 				'old_priority_id'      => $issue['priority_id'],
-				'old_resolution_id'    => $issue['resolution_id'],
+				'old_status_id'        => $issue['status_id'],
 				'old_assigned_user_id' => $issue['assigned_user_id'],
 				'priority_id'          => $ctx->priority,
-				'resolution_id'        => $ctx->resolution,
+				'status_id'            => $ctx->status,
 				'assigned_user_id'     => $ctx->user,
 				'url'                  => $this->to_uri("issues/{$ctx->iid}"));
 			if (trim($ctx->message) !== '') {
@@ -55,7 +55,7 @@ class IssueHandler extends AFK_HandlerBase {
 				$data['message'] = $ctx->message;
 				trigger_event('message_posted', $data);
 			} elseif ($ctx->priority != $issue['priority_id'] ||
-					$ctx->resolution != $issue['resolution_id'] ||
+					$ctx->status != $issue['status_id'] ||
 					$ctx->user != $issue['assigned_user_id']) {
 				trigger_event('issue_status_changed', $data);
 			}

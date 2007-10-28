@@ -11,7 +11,7 @@ CREATE TABLE issues (
     id               INTEGER      NOT NULL AUTO_INCREMENT,
     project_id       INTEGER      NOT NULL,
     assigned_user_id INTEGER      NOT NULL,
-    resolution_id    TINYINT      NOT NULL DEFAULT 0,
+    status_id        TINYINT      NOT NULL DEFAULT 0,
     priority_id      TINYINT      NOT NULL DEFAULT 4,
     title            VARCHAR(255) NOT NULL,
     last_updated     TIMESTAMP    NOT NULL,
@@ -21,22 +21,24 @@ CREATE TABLE issues (
     INDEX ix_user (assigned_user_id, project_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE resolutions (
-    id         TINYINT  NOT NULL,
-    resolution CHAR(24) NOT NULL,
-    is_open    TINYINT  NOT NULL DEFAULT 0,
-    ordering   TINYINT  NOT NULL,
+CREATE TABLE statuses (
+    id       TINYINT  NOT NULL,
+    status   CHAR(32) NOT NULL,
+    is_open  TINYINT  NOT NULL DEFAULT 0,
+    ordering TINYINT  NOT NULL,
 
     PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO resolutions VALUES (0, 'Untriaged',              1, 0);
-INSERT INTO resolutions VALUES (1, 'Open',                   1, 10);
-INSERT INTO resolutions VALUES (2, 'Suspended',              1, 20);
-INSERT INTO resolutions VALUES (3, 'Resolved',               0, 30);
-INSERT INTO resolutions VALUES (4, 'Intended Behaviour',     0, 40);
-INSERT INTO resolutions VALUES (5, 'Not Enough Information', 0, 50);
-INSERT INTO resolutions VALUES (6, 'Won''t Fix',             0, 60);
+INSERT INTO statuses VALUES (0, 'Untriaged',               1, 0);
+INSERT INTO statuses VALUES (1, 'Open',                    1, 10);
+INSERT INTO statuses VALUES (2, 'Suspended',               1, 20);
+INSERT INTO statuses VALUES (3, 'Resolved',                0, 30);
+INSERT INTO statuses VALUES (4, 'Intended Behaviour',      0, 40);
+INSERT INTO statuses VALUES (5, 'Not Enough Information',  0, 50);
+INSERT INTO statuses VALUES (6, 'Won''t Fix',              0, 60);
+INSERT INTO statuses VALUES (7, 'Design Descision Needed', 1, 5);
+INSERT INTO statuses VALUES (8, 'Works For Me',            0, 35);
 
 CREATE TABLE priorities (
     id       TINYINT  NOT NULL,

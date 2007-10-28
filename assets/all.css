@@ -138,6 +138,8 @@ th {
 	overflow: hidden;
 	padding: 1em 1em 1em 12em;
 	border-bottom: 1px solid #DDD;
+	/* A hack for Firefox; not necessary in Opera. */
+	min-height: 2.5em;
 }
 
 .message .metadata {

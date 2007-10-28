@@ -1,3 +1,6 @@
+<?php if ($current_row == 1) { ?>
+	<h2>Changes</h2>
+<?php } ?>
 <div class="message<?php if ($current_row == 0) echo ' first' ?>">
 	<div class="metadata">
 	<strong><?php ee(Users::get($user_id)->get_username()) ?></strong><br>

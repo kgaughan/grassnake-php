@@ -17,15 +17,15 @@ class Issues {
 		global $db;
 
 		return $db->query_all("
-			SELECT		issues.id, title, project_id, project, resolution, priority,
+			SELECT		issues.id, title, project_id, project, status, priority,
 						COUNT(*) AS messages, MAX(posted) AS updated,
 						assigned_user_id, watches.user_id IS NOT NULL AS watched
 			FROM		issues
-			JOIN		projects    ON projects.id      = project_id
-			JOIN		priorities  ON priorities.id    = priority_id
-			JOIN		resolutions ON resolutions.id   = resolution_id
-			JOIN		messages    ON issues.id        = messages.issue_id
-			LEFT JOIN	watches		ON watches.issue_id = issues.id AND watches.user_id = %d
+			JOIN		projects   ON projects.id      = project_id
+			JOIN		priorities ON priorities.id    = priority_id
+			JOIN		statuses   ON statuses.id      = status_id
+			JOIN		messages   ON issues.id        = messages.issue_id
+			LEFT JOIN	watches    ON watches.issue_id = issues.id AND watches.user_id = %d
 			GROUP BY	issues.id
 			ORDER BY	issues.id ASC
 			", Users::current()->get_id());
@@ -38,13 +38,13 @@ class Issues {
 			SELECT	project_id, project,
 					assigned_user_id,
 					title,
-					resolution_id, priority_id,
-					resolution, priority,
+					status_id, priority_id,
+					status, priority,
 					last_updated
 			FROM	issues
-			JOIN	projects ON projects.id = project_id
+			JOIN	projects   ON projects.id   = project_id
 			JOIN	priorities ON priorities.id = priority_id
-			JOIN	resolutions ON resolutions.id = resolution_id
+			JOIN	statuses   ON statuses.id   = status_id
 			WHERE	issues.id = %d
 			", $id);
 	}
@@ -94,9 +94,9 @@ class Issues {
 		return $db->query_list("SELECT user_id FROM watches WHERE issue_id = %d", $id);
 	}
 
-	public static function translate_resolution($id) {
+	public static function translate_status($id) {
 		global $db;
-		return $db->query_value("SELECT resolution FROM resolutions WHERE id = %d", $id);
+		return $db->query_value("SELECT status FROM statuses WHERE id = %d", $id);
 	}
 
 	public static function translate_priority($id) {
@@ -104,10 +104,10 @@ class Issues {
 		return $db->query_value("SELECT priority FROM priorities WHERE id = %d", $id);
 	}
 
-	public static function update($id, $priority_id, $resolution_id, $assigned_user_id) {
+	public static function update($id, $priority_id, $status_id, $assigned_user_id) {
 		global $db;
 		$db->update('issues',
-			compact('priority_id', 'resolution_id', 'assigned_user_id'),
+			compact('priority_id', 'status_id', 'assigned_user_id'),
 			array('id' => array('=', $id)));
 	}
 
@@ -115,36 +115,29 @@ class Issues {
 		global $db;
 
 		return $db->query_all("
-			SELECT		issues.id, title, priority, resolution,
+			SELECT		issues.id, title, priority, status,
 						COUNT(*) AS messages, MAX(posted) AS updated,
 						assigned_user_id, watches.user_id IS NOT NULL AS watched
 			FROM		issues
-			JOIN		priorities  ON priorities.id    = priority_id
-			JOIN		resolutions ON resolutions.id   = resolution_id
-			JOIN		messages    ON issues.id        = messages.issue_id
-			LEFT JOIN	watches		ON watches.issue_id = issues.id AND watches.user_id = %d
+			JOIN		priorities ON priorities.id    = priority_id
+			JOIN		statuses   ON statuses.id      = status_id
+			JOIN		messages   ON issues.id        = messages.issue_id
+			LEFT JOIN	watches    ON watches.issue_id = issues.id AND watches.user_id = %d
 			WHERE		project_id = %d
 			GROUP BY	issues.id
 			ORDER BY	is_open DESC, priorities.ordering ASC, issues.id ASC
 			", Users::current()->get_id(), $id);
 	}
 
-	public function get_resolutions() {
+	public function get_statuses() {
 		global $db;
 
-		return $db->query_map("
-			SELECT id, resolution
-			FROM resolutions
-			ORDER BY ordering ASC");
+		return $db->query_map("SELECT id, status FROM statuses ORDER BY ordering ASC");
 	}
 
 	public function get_priorities() {
 		global $db;
 
-		return $db->query_map("
-			SELECT	id, priority
-			FROM	priorities
-			ORDER BY ordering ASC");
+		return $db->query_map("SELECT id, priority FROM priorities ORDER BY ordering ASC");
 	}
-
 }

@@ -15,14 +15,14 @@
 	<thead>
 		<tr>
 			<th>Priority</th>
-			<th>Resolution</th>
+			<th>Status</th>
 			<th>Last Updated</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td><?php ee($priority) ?></td>
-			<td><?php ee($resolution) ?></td>
+			<td><?php ee($status) ?></td>
 			<td><?php ee(date('j-M-Y, H:i', strtotime($last_updated))) ?></td>
 		</tr>
 	</tbody>
@@ -42,8 +42,8 @@
 		<td><?php select_box('priority', Issues::get_priorities(), $priority_id) ?></td>
 	</tr>
 	<tr>
-		<th><label for="resolution">Resolution</label></th>
-		<td><?php select_box('resolution', Issues::get_resolutions(), $resolution_id) ?></td>
+		<th><label for="status">Status</label></th>
+		<td><?php select_box('status', Issues::get_statuses(), $status_id) ?></td>
 	</tr>
 	<tr>
 		<th><label for="user">Owned by</label></th>
