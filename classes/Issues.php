@@ -9,6 +9,9 @@ class Issues {
 			compact('project_id', 'title', 'priority_id', 'assigned_user_id'));
 		self::add_message($id, $message);
 		self::watch($id);
+		if ($assigned_user_id != Users::current()->get_id()) {
+			self::watch($id, $assigned_user_id);
+		}
 
 		return $id;
 	}
@@ -72,15 +75,16 @@ class Issues {
 			", $id, Users::current()->get_id(), $message);
 	}
 
-	public static function watch($id) {
+	public static function watch($issue_id, $user_id=null) {
 		global $db;
+		if (is_null($user_id)) {
+			$user_id = Users::current()->get_id();
+		}
 
 		// Just in case...
 		self::unwatch($id);
 
-		$db->insert('watches', array(
-			'user_id' => Users::current()->get_id(),
-			'issue_id' => $id));
+		$db->insert('watches', compact('user_id', 'issue_id'));
 	}
 
 	public static function unwatch($id) {
@@ -109,6 +113,7 @@ class Issues {
 		$db->update('issues',
 			compact('priority_id', 'status_id', 'assigned_user_id'),
 			array('id' => array('=', $id)));
+		self::watch($id, $assigned_user_id);
 	}
 
 	public static function get_all_for_project($id) {
