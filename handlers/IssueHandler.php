@@ -49,7 +49,7 @@ class IssueHandler extends AFK_HandlerBase {
 				'priority_id'          => $ctx->priority,
 				'status_id'            => $ctx->status,
 				'assigned_user_id'     => $ctx->user,
-				'url'                  => $this->to_uri("issues/{$ctx->iid}"));
+				'url'                  => $ctx->base_uri("issues", $ctx->iid));
 			if (trim($ctx->message) !== '') {
 				Issues::add_message($ctx->iid, $ctx->message);
 				$data['message'] = $ctx->message;
@@ -64,19 +64,11 @@ class IssueHandler extends AFK_HandlerBase {
 	}
 
 	private function save_issue($project_id, $priority_id, $title, $message) {
+		$ctx = AFK_Registry::context();
 		$issue_id = Issues::add($project_id, $priority_id, $title, $message);
 		$project = Projects::get_name($project_id);
-		$url = $this->to_uri("issues/$issue_id");
+		$url = $ctx->base_uri("issues", $issue_id);
 		trigger_event('issue_posted', compact('project', 'title', 'message', 'project_id', 'issue_id', 'priority_id', 'url'));
 		return $issue_id;
-	}
-
-	/**
-	 * Takes a path relative to the application root and turns it into a proper
-	 * URI.
-	 */
-	private function to_uri($path) {
-		$ctx = AFK_Registry::context();
-		return $ctx->to_absolute_uri($ctx->application_root() . $path);
 	}
 }
