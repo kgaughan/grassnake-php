@@ -137,7 +137,7 @@ th {
 .message {
 	overflow: hidden;
 	padding: 1em 1em 1em 12em;
-	border-bottom: 1px solid #DDD;
+	border-bottom: 1px solid #DDDDD2;
 	/* A hack for Firefox; not necessary in Opera. */
 	min-height: 2.5em;
 }
@@ -147,7 +147,7 @@ th {
 	width: 14em;
 	margin: 0 0 0 -15em;
 	font-size: 80%;
-	color: gray;
+	color: #66665D;
 	text-align: right;
 }
 
@@ -158,7 +158,16 @@ th {
 }
 
 .first {
-	border-top: 1px solid #DDD;
-	background: #F8F8F8;
+	background-color: #FFFFCC;
+	border-bottom: 1px solid #CCCC99;
+	border-top: 1px solid #CCCC99;
 	margin-top: 1em;
+}
+
+.even {
+	background: #F8F8F0;
+}
+
+.first .metadata {
+	color: #666633;
 }
