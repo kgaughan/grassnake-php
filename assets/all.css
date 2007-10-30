@@ -171,3 +171,9 @@ th {
 .first .metadata {
 	color: #666633;
 }
+
+.encouragement {
+	margin: 0 5em;
+	text-align: center;
+	font-size: 150%;
+}

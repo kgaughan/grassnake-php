@@ -1,8 +1,8 @@
 <?php $this->with_envelope() ?>
 
-<h1>Open Issues Assigned to You</h1>
-
 <?php if (!empty($issues)) { ?>
+	<h1>Open Issues Assigned to You</h1>
+
 	<table class="data">
 		<thead>
 			<tr>
@@ -23,13 +23,11 @@
 			<?php } ?>
 		</tbody>
 	</table>
-<?php } else { ?>
-	<p>You have no issues assigned to you.</p>
 <?php } ?>
 
-<h1>Your Watches</h1>
-
 <?php if (!empty($watches)) { ?>
+	<h1>Your Watches</h1>
+
 	<table class="data">
 		<thead>
 			<tr>
@@ -52,12 +50,30 @@
 			<?php } ?>
 		</tbody>
 	</table>
-<?php } else { ?>
-	<p>You have no watches.</p>
 <?php } ?>
 
-<?php if (Users::current()->can('post')) { ?>
-<?php start_slot('sidebar') ?>
-<?php $this->render('new-issue') ?>
-<?php end_slot() ?>
+<?php if (empty($issues) && empty($watches)) { ?>
+	<div class="encouragement">
+	<p>Welcome to <strong>GrassSnake</strong>, the issue tracker that sucks a
+	little less.</p>
+
+	<p>You don&rsquo;t seem to be working on anything, and you&rsquo;re not
+	watching the progress of any issues, so you might want to look through
+	the <a href="projects/">projects</a>, or take a look through the
+	<a href="issues/">issues already in the system</a>.</p>
+
+	<p>Alternatively, you could always add a new one.</p>
+
+	<p class="illustration"><img src="assets/images/blue-arrow.png"
+		width="240" height="180" alt=""></p>
+	</div>
 <?php } ?>
+
+<?php
+if (Users::current()->can('post')) {
+	start_slot('sidebar');
+	$this->render('new-issue');
+	$this->render('new-project');
+	end_slot();
+}
+?>

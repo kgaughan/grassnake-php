@@ -4,7 +4,6 @@ class ProjectHandler extends AFK_HandlerBase {
 	public function on_get(AFK_Context $ctx) {
 		if ($ctx->pid == '') {
 			$ctx->projects = Projects::get_active_details();
-			$ctx->devs = Users::get_developers();
 			$ctx->page_title = 'Active Projects';
 			$ctx->change_view('list');
 		} else {

@@ -54,23 +54,10 @@ Projects
 	</table>
 <?php } ?>
 
-<?php if (Users::current()->can('post')) { ?>
-<?php start_slot('sidebar') ?>
-<form method="post" action="">
-<fieldset>
-<legend>New Project</legend>
-<table>
-	<tr>
-		<th><label for="name">Name</label></th>
-		<td><input type="text" name="name" id="name" value=""></td>
-	</tr>
-	<tr>
-		<th><label for="user">Lead</label></th>
-		<td><?php $this->render('developer-select', compact('devs')) ?></td>
-	</tr>
-</table>
-<input type="submit" value="Add">
-</fieldset>
-</form>
-<?php end_slot() ?>
-<?php } ?>
+<?php
+if (Users::current()->can('post')) {
+	start_slot('sidebar');
+	$this->render('new-project');
+	end_slot();
+}
+?>

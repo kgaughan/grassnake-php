@@ -1,3 +1,5 @@
+<?php $projects = Projects::get_active() ?>
+<?php if (isset($pid) || count($projects) > 0) { ?>
 <form method="post" action="<?php ee($ctx->application_root()) ?>issues/">
 <?php if (isset($pid)) { ?>
 <input type="hidden" name="pid" value="<?php echo $pid ?>">
@@ -8,7 +10,7 @@
 <?php if (!isset($pid)) { ?>
 	<tr>
 		<th><label for="pid">Project</label></th>
-		<td><?php select_box('pid', Projects::get_active()) ?></td>
+		<td><?php select_box('pid', $projects) ?></td>
 	</tr>
 <?php } ?>
 	<tr>
@@ -42,3 +44,4 @@ Please provide any additional information below.
 <input type="submit" value="Submit Issue">
 </fieldset>
 </form>
+<?php } ?>
