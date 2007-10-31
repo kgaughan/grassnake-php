@@ -30,15 +30,15 @@ CREATE TABLE statuses (
     PRIMARY KEY  (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO statuses VALUES (0, 'Untriaged',               1, 0);
-INSERT INTO statuses VALUES (1, 'Open',                    1, 10);
-INSERT INTO statuses VALUES (2, 'Suspended',               1, 20);
-INSERT INTO statuses VALUES (3, 'Resolved',                0, 30);
-INSERT INTO statuses VALUES (4, 'Intended Behaviour',      0, 40);
-INSERT INTO statuses VALUES (5, 'Not Enough Information',  0, 50);
-INSERT INTO statuses VALUES (6, 'Won''t Fix',              0, 60);
-INSERT INTO statuses VALUES (7, 'Design Descision Needed', 1, 5);
-INSERT INTO statuses VALUES (8, 'Works For Me',            0, 35);
+INSERT INTO statuses VALUES (0, 'Untriaged',              1, 0);
+INSERT INTO statuses VALUES (1, 'Open',                   1, 10);
+INSERT INTO statuses VALUES (2, 'Suspended',              1, 20);
+INSERT INTO statuses VALUES (3, 'Resolved',               0, 30);
+INSERT INTO statuses VALUES (4, 'Intended Behaviour',     0, 40);
+INSERT INTO statuses VALUES (5, 'Not Enough Information', 0, 50);
+INSERT INTO statuses VALUES (6, 'Won''t Fix',             0, 60);
+INSERT INTO statuses VALUES (7, 'Design Decision Needed', 1, 5);
+INSERT INTO statuses VALUES (8, 'Works For Me',           0, 35);
 
 CREATE TABLE priorities (
     id       TINYINT  NOT NULL,
@@ -48,12 +48,13 @@ CREATE TABLE priorities (
     PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO priorities VALUES (1, 'Enhancement', 99);
-INSERT INTO priorities VALUES (2, 'Critical',    5);
-INSERT INTO priorities VALUES (3, 'High',        10);
-INSERT INTO priorities VALUES (4, 'Medium',      20);
-INSERT INTO priorities VALUES (5, 'Showstopper', 1);
-INSERT INTO priorities VALUES (6, 'Annoyance',   50);
+INSERT INTO priorities VALUES (1, 'Enhancement',   99);
+INSERT INTO priorities VALUES (2, 'Critical',      5);
+INSERT INTO priorities VALUES (3, 'High',          10);
+INSERT INTO priorities VALUES (4, 'Medium',        20);
+INSERT INTO priorities VALUES (5, 'Showstopper',   1);
+INSERT INTO priorities VALUES (6, 'Annoyance',     50);
+INSERT INTO priorities VALUES (7, 'Documentation', 60);
 
 CREATE TABLE watches (
     user_id  INTEGER NOT NULL,

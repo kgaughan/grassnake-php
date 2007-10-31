@@ -24,7 +24,7 @@ class RootHandler extends AFK_HandlerBase {
 			JOIN		projects   ON projects.id    = project_id
 			JOIN		priorities ON priorities.id  = priority_id
 			JOIN		statuses   ON statuses.id    = status_id
-			WHERE		user_id = %1$d AND (assigned_user_id <> %1$d OR assigned_user_id IS NULL)
+			WHERE		watches.user_id = %1$d AND assigned_user_id <> %1$d
 			ORDER BY	last_updated DESC
 			', $user_id);
 	}

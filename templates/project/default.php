@@ -17,14 +17,14 @@ Issues for <?php ee($name) ?>
 				<th width="13"><img src="../assets/images/eye.png" width="13" height="13" alt="Watches" title="Watches"></th>
 				<th>Title</th>
 				<th width="10%">Priority</th>
-				<th width="10%">Status</th>
+				<th width="17%">Status</th>
 				<th width="18%">Assigned to</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach ($issues as $r) { ?>
 			<tr>
-				<td class="numeric"><?php echo $r['id'] ?></td>
+				<td class="numeric"><a href="../issues/<?php ee($r['id']) ?>"><?php echo $r['id'] ?></a></td>
 				<td><?php $this->render('star', $r) ?></td>
 				<td><a href="../issues/<?php ee($r['id']) ?>"><?php ee($r['title']) ?></a></td>
 				<td><?php ee($r['priority']) ?></td>

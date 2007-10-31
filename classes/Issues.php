@@ -82,15 +82,18 @@ class Issues {
 		}
 
 		// Just in case...
-		self::unwatch($id);
+		self::unwatch($issue_id, $user_id);
 
 		$db->insert('watches', compact('user_id', 'issue_id'));
 	}
 
-	public static function unwatch($id) {
+	public static function unwatch($issue_id, $user_id=null) {
 		global $db;
-		$db->execute("DELETE FROM watches WHERE user_id = %d AND issue_id = %d",
-			Users::current()->get_id(), $id);
+		if (is_null($user_id)) {
+			$user_id = Users::current()->get_id();
+		}
+
+		$db->execute("DELETE FROM watches WHERE user_id = %d AND issue_id = %d", $user_id, $issue_id);
 	}
 
 	public static function get_watchers($id) {

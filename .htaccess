@@ -1,3 +1,11 @@
+<IfModule mod_expires.c>
+ExpiresByType image/gif "modification plus 6 hours"
+ExpiresByType image/png "modification plus 6 hours"
+ExpiresByType image/jpeg "modification plus 6 hours"
+ExpiresByType text/css "modification plus 6 hours"
+ExpiresByType text/javascript "modification plus 6 hours"
+</IfModule>
+
 RewriteEngine On
 RewriteBase /~keith/projects/grasssnake/
 RewriteRule ^assets/.*         -                [L]

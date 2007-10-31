@@ -23,7 +23,7 @@ All Issues
 		<tbody>
 			<?php foreach ($issues as $r) { ?>
 			<tr>
-				<td class="numeric"><?php echo $r['id'] ?></td>
+				<td class="numeric"><a href="<?php echo $r['id'] ?>"><?php echo $r['id'] ?></a></td>
 				<td><?php $this->render('star', $r) ?></td>
 				<td><a href="<?php echo $r['id'] ?>"><strong><?php ee($r['project']) ?>:</strong> <?php ee($r['title']) ?></a></td>
 				<td><?php ee($r['priority']) ?></td>

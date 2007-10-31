@@ -15,7 +15,7 @@
 		<tbody>
 			<?php foreach ($issues as $r) { ?>
 			<tr>
-				<td class="numeric"><?php echo $r['id'] ?></td>
+				<td class="numeric"><a href="issues/<?php echo $r['id'] ?>"><?php echo $r['id'] ?></a></td>
 				<td><a href="projects/<?php echo $r['project_id'] ?>"><?php ee($r['project']) ?></a>: <a href="issues/<?php echo $r['id'] ?>"><?php ee($r['title']) ?></a></td>
 				<td><?php ee($r['priority']) ?></td>
 				<td><?php ee(date('j-M-Y, H:i', strtotime($r['last_updated']))) ?></td>
@@ -33,7 +33,7 @@
 			<tr>
 				<th class="numeric" width="5%">#</th>
 				<th>Title</th>
-				<th width="10%">Status</th>
+				<th width="17%">Status</th>
 				<th width="10%">Priority</th>
 				<th width="15%">Last Updated</th>
 			</tr>
@@ -41,7 +41,7 @@
 		<tbody>
 			<?php foreach ($watches as $r) { ?>
 			<tr>
-				<td class="numeric"><?php echo $r['id'] ?></td>
+				<td class="numeric"><a href="issues/<?php echo $r['id'] ?>"><?php echo $r['id'] ?></a></td>
 				<td><a href="projects/<?php echo $r['project_id'] ?>"><?php ee($r['project']) ?></a>: <a href="issues/<?php echo $r['id'] ?>"><?php ee($r['title']) ?></a></td>
 				<td><?php ee($r['status']) ?></td>
 				<td><?php ee($r['priority']) ?></td>
