@@ -35,9 +35,6 @@
 <legend>New Message</legend>
 <table>
 	<tr>
-		<td colspan="2"><textarea name="message" rows="15"></textarea></td>
-	</tr>
-	<tr>
 		<th><label for="priority">Priority</label></th>
 		<td><?php select_box('priority', Issues::get_priorities(), $priority_id) ?></td>
 	</tr>
@@ -48,6 +45,9 @@
 	<tr>
 		<th><label for="user">Owned by</label></th>
 		<td><?php $this->render('developer-select', compact('devs', 'assigned_user_id')) ?></td>
+	</tr>
+	<tr>
+		<td colspan="2"><textarea name="message" rows="15"></textarea></td>
 	</tr>
 </table>
 <input type="submit" value="Submit Message">

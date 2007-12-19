@@ -14,6 +14,13 @@
 	</tr>
 <?php } ?>
 	<tr>
+		<th>Type/Priority</th>
+		<td>
+			<label><input type="radio" name="priority" value="4" checked="checked"> Bug (Defaults to Medium Priority)</label><br>
+			<label><input type="radio" name="priority" value="1"> Enhancement</label>
+		</td>
+	</tr>
+	<tr>
 		<th><label for="title">Title</label></th>
 		<td><input type="text" name="title" id="title" value=""></td>
 	</tr>
@@ -32,13 +39,6 @@ What version of the product are you using? On what operating system?
 
 Please provide any additional information below.
 </textarea></td>
-	</tr>
-	<tr>
-		<th>Type/Priority</th>
-		<td>
-			<label><input type="radio" name="priority" value="4" checked="checked"> Bug (Defaults to Medium Priority)</label><br>
-			<label><input type="radio" name="priority" value="1"> Enhancement</label>
-		</td>
 	</tr>
 </table>
 <input type="submit" value="Submit Issue">
