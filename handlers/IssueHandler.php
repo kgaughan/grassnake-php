@@ -30,8 +30,7 @@ class IssueHandler extends AFK_HandlerBase {
 		if ($ctx->pid != '') {
 			// Posting a new issue.
 			$ctx->title = trim($ctx->title);
-			$url = $ctx->base_url("issues", $issue_id);
-			$this->save_issue($ctx->pid, $ctx->priority, $ctx->title, $ctx->message, $url);
+			$this->save_issue($ctx, $ctx->pid, $ctx->priority, $ctx->title, $ctx->message);
 			$ctx->redirect(303, $ctx->HTTP_REFERER);
 		} elseif ($ctx->iid != '') {
 			// Posting a message to an issue or altering its status.
@@ -64,8 +63,9 @@ class IssueHandler extends AFK_HandlerBase {
 		}
 	}
 
-	private function save_issue($project_id, $priority_id, $title, $message, $url) {
+	private function save_issue(AFK_Context $ctx, $project_id, $priority_id, $title, $message) {
 		$issue_id = Issues::add($project_id, $priority_id, $title, $message);
+		$url = $ctx->base_url("issues", $issue_id);
 		$project = Projects::get_name($project_id);
 		trigger_event('issue_posted', compact('project', 'title', 'message', 'project_id', 'issue_id', 'priority_id', 'url'));
 		return $issue_id;
