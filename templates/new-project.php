@@ -7,7 +7,7 @@
 		<td><input type="text" name="name" id="name" value=""></td>
 	</tr>
 	<tr>
-		<th><label for="user">Lead</label></th>
+		<th><label for="user_id">Lead</label></th>
 		<td><?php $this->render('developer-select', array('devs' => Users::get_developers())) ?></td>
 	</tr>
 </table>

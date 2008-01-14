@@ -35,15 +35,15 @@
 <legend>New Message</legend>
 <table>
 	<tr>
-		<th><label for="priority">Priority</label></th>
-		<td><?php select_box('priority', Issues::get_priorities(), $priority_id) ?></td>
+		<th><label for="priority_id">Priority</label></th>
+		<td><?php select_box('priority_id', Issues::get_priorities()) ?></td>
 	</tr>
 	<tr>
-		<th><label for="status">Status</label></th>
-		<td><?php select_box('status', Issues::get_statuses(), $status_id) ?></td>
+		<th><label for="status_id">Status</label></th>
+		<td><?php select_box('status_id', Issues::get_statuses()) ?></td>
 	</tr>
 	<tr>
-		<th><label for="user">Owned by</label></th>
+		<th><label for="user_id">Owned by</label></th>
 		<td><?php $this->render('developer-select', compact('devs', 'assigned_user_id')) ?></td>
 	</tr>
 	<tr>

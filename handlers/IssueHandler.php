@@ -30,7 +30,7 @@ class IssueHandler extends AFK_HandlerBase {
 		if ($ctx->pid != '') {
 			// Posting a new issue.
 			$ctx->title = trim($ctx->title);
-			$this->save_issue($ctx, $ctx->pid, $ctx->priority, $ctx->title, $ctx->message);
+			$this->save_issue($ctx, $ctx->pid, $ctx->priority_id, $ctx->title, $ctx->message);
 			$ctx->redirect(303, $ctx->HTTP_REFERER);
 		} elseif ($ctx->iid != '') {
 			// Posting a message to an issue or altering its status.
@@ -38,7 +38,7 @@ class IssueHandler extends AFK_HandlerBase {
 			if (!$issue) {
 				$ctx->not_found('No such issue.');
 			}
-			Issues::update($ctx->iid, $ctx->priority, $ctx->status, $ctx->user);
+			Issues::update($ctx->iid, $ctx->priority_id, $ctx->status_id, $ctx->user_id);
 			$data = array(
 				'project'              => $issue['project'],
 				'title'                => $issue['title'],
@@ -46,17 +46,17 @@ class IssueHandler extends AFK_HandlerBase {
 				'old_priority_id'      => $issue['priority_id'],
 				'old_status_id'        => $issue['status_id'],
 				'old_assigned_user_id' => $issue['assigned_user_id'],
-				'priority_id'          => $ctx->priority,
-				'status_id'            => $ctx->status,
-				'assigned_user_id'     => $ctx->user,
+				'priority_id'          => $ctx->priority_id,
+				'status_id'            => $ctx->status_id,
+				'assigned_user_id'     => $ctx->user_id,
 				'url'                  => $ctx->base_url("issues", $ctx->iid));
 			if (trim($ctx->message) !== '') {
 				Issues::add_message($ctx->iid, $ctx->message);
 				$data['message'] = $ctx->message;
 				trigger_event('message_posted', $data);
-			} elseif ($ctx->priority != $issue['priority_id'] ||
-					$ctx->status != $issue['status_id'] ||
-					$ctx->user != $issue['assigned_user_id']) {
+			} elseif ($ctx->priority_id != $issue['priority_id'] ||
+					$ctx->status_id != $issue['status_id'] ||
+					$ctx->user_id != $issue['assigned_user_id']) {
 				trigger_event('issue_status_changed', $data);
 			}
 			$ctx->redirect();

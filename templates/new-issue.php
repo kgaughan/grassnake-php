@@ -16,8 +16,8 @@
 	<tr>
 		<th>Type/Priority</th>
 		<td>
-			<label><input type="radio" name="priority" value="4" checked="checked"> Bug (Defaults to Medium Priority)</label><br>
-			<label><input type="radio" name="priority" value="1"> Enhancement</label>
+			<label><input type="radio" name="priority_id" value="4" checked="checked"> Bug (Defaults to Medium Priority)</label><br>
+			<label><input type="radio" name="priority_id" value="1"> Enhancement</label>
 		</td>
 	</tr>
 	<tr>

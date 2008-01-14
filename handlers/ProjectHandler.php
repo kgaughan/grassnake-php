@@ -23,7 +23,7 @@ class ProjectHandler extends AFK_HandlerBase {
 		$ctx->allow_rendering(false);
 		if ($ctx->pid == '') {
 			$ctx->name = trim($ctx->name);
-			$ctx->redirect(303, Projects::add($ctx->name, $ctx->user));
+			$ctx->redirect(303, Projects::add($ctx->name, $ctx->user_id));
 		}
 	}
 }
