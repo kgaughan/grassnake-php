@@ -32,6 +32,7 @@
 		<thead>
 			<tr>
 				<th class="numeric" width="5%">#</th>
+				<th width="13"><img src="../assets/images/eye.png" width="13" height="13" alt="Watches" title="Watches"></th>
 				<th>Title</th>
 				<th width="17%">Status</th>
 				<th width="10%">Priority</th>
@@ -42,6 +43,7 @@
 			<?php foreach ($watches as $r) { ?>
 			<tr>
 				<td class="numeric"><a href="issues/<?php echo $r['id'] ?>"><?php echo $r['id'] ?></a></td>
+				<td><?php $this->render('star', $r) ?></td>
 				<td><a href="projects/<?php echo $r['project_id'] ?>"><?php ee($r['project']) ?></a>: <a href="issues/<?php echo $r['id'] ?>"><?php ee($r['title']) ?></a></td>
 				<td><?php ee($r['status']) ?></td>
 				<td><?php ee($r['priority']) ?></td>
