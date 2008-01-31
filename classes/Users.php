@@ -18,8 +18,9 @@ class Users extends AFK_Users {
 		static $id = null;
 
 		if (is_null($id)) {
-			$id = $db->query_value("SELECT user_id FROM user_ips WHERE ip = %u",
-				ip2long($_SERVER['REMOTE_ADDR']));
+			$id = $db->query_value(
+				"SELECT user_id FROM user_ips WHERE ip = INET_ATON(%s)",
+				$_SERVER['REMOTE_ADDR']);
 			if (is_null($id)) {
 				$id = 0;
 			}
