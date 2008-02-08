@@ -180,5 +180,6 @@ th {
 }
 
 #watcher {
+	background: transparent url(images/eye.png) top right no-repeat;
 	float: right;
 }
