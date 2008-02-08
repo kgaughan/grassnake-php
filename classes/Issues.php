@@ -38,18 +38,20 @@ class Issues {
 		global $db;
 
 		return $db->query_row("
-			SELECT	project_id, project,
-					assigned_user_id,
-					title,
-					status_id, priority_id,
-					status, priority,
-					last_updated
-			FROM	issues
-			JOIN	projects   ON projects.id   = project_id
-			JOIN	priorities ON priorities.id = priority_id
-			JOIN	statuses   ON statuses.id   = status_id
-			WHERE	issues.id = %d
-			", $id);
+			SELECT		project_id, project,
+						assigned_user_id,
+						title,
+						status_id, priority_id,
+						status, priority,
+						last_updated,
+						IF(watches.user_id IS NULL, 0, 1) AS watched
+			FROM		issues
+			JOIN		projects   ON projects.id      = project_id
+			JOIN		priorities ON priorities.id    = priority_id
+			JOIN		statuses   ON statuses.id      = status_id
+			LEFT JOIN	watches    ON watches.issue_id = issues.id AND watches.user_id = %d
+			WHERE		issues.id = %d
+			", Users::current()->get_id(), $id);
 	}
 
 	public static function get_messages($id) {

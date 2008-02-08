@@ -6,7 +6,13 @@
 <?php ee($title) ?>
 <?php end_slot() ?>
 
-<h1><span>Issue #<?php echo $iid ?> (<?php ee($project) ?>):</span> <?php ee($title) ?></h1>
+<h1>
+	<div id="watcher">
+		<?php $this->render('big-star', array('id' => $iid)) ?>
+	</div>
+	<span>Issue #<?php echo $iid ?> (<?php ee($project) ?>):</span>
+	<?php ee($title) ?>
+</h1>
 
 <?php $this->render_each('message', $messages) ?>
 

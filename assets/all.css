@@ -17,6 +17,7 @@ h1 {
 	font-size: 200%;
 	font-weight: normal;
 	line-height: 1;
+	overflow: hidden;
 }
 
 h1 span {
@@ -176,4 +177,8 @@ th {
 	margin: 0 5em;
 	text-align: center;
 	font-size: 150%;
+}
+
+#watcher {
+	float: right;
 }
