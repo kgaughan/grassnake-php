@@ -1,7 +1,7 @@
 <?php $this->with_envelope() ?>
 
 <?php if (!empty($issues)) { ?>
-	<h1>Open Issues Assigned to You</h1>
+	<h1>Open Issues Assigned to You <span class="note">(<?php echo count($issues) ?>)</span></h1>
 
 	<table class="data">
 		<thead>
@@ -26,7 +26,7 @@
 <?php } ?>
 
 <?php if (!empty($watches)) { ?>
-	<h1>Your Watches</h1>
+	<h1>Your Watches <span class="note">(<?php echo count($watches) ?>)</span></h1>
 
 	<table class="data">
 		<thead>

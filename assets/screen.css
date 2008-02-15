@@ -65,8 +65,13 @@ div#sidebar form {
 
 form fieldset {
 	border: none;
-	padding: 0;
-	border-top: 1px solid orange;
+	padding: 1ex 0 0 0;
+	border-top: 2px solid orange;
+}
+
+form legend {
+	font-size: 200%;
+	padding-right: 1ex;
 }
 
 form input[type=text], form textarea, form select {

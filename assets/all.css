@@ -18,6 +18,8 @@ h1 {
 	font-weight: normal;
 	line-height: 1;
 	overflow: hidden;
+	/* A hack to compensate from the clipping due to line-height and overflow. */
+	padding-bottom: 0.2ex;
 }
 
 h1 span {
@@ -25,6 +27,11 @@ h1 span {
 	font-weight: bold;
 	display: block;
 	color: gray;
+}
+
+h1 span.note {
+	font-size: 75%;
+	display: inline;
 }
 
 h2 {
