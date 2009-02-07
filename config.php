@@ -7,21 +7,21 @@ define('DB_NAME', 'grasssnake');
 define('APP_VERSION', '0.2.0');
 
 function routes() {
-	$r = new AFK_Routes();
+	$r = new AFK_Routes(array('pid' => '\d+', 'iid' => '\d+'));
 
-	$r->route('/',      array('_handler' => 'Root', '_view' => 'console'));
+	$r->route('/', array('_handler' => 'Root', '_view' => 'console'));
 	$r->route('/about', array('_handler' => 'Root', '_view' => 'about'));
 
-	$r->route('/projects/{pid}', array('_handler' => 'Project'), array('pid' => '\d*'));
-	$r->route('/issues/{iid}',   array('_handler' => 'Issue'),   array('iid' => '\d*'));
+	$r->route('/projects/', array('_handler' => 'Project'));
+	$r->route('/projects/{pid}', array('_handler' => 'Project'));
+	$r->route('/issues/', array('_handler' => 'Issue'));
+	$r->route('/issues/{iid}', array('_handler' => 'Issue'));
 
 	$r->route('/watches/',
 		array('_handler' => 'Watch', '_view' => 'new'));
 	$r->route('/watches/{iid}',
-		array('_handler' => 'Watch', '_view' => 'watch'),
-		array('iid' => '\d+'));
+		array('_handler' => 'Watch', '_view' => 'watch'));
 
-	$r->fallback(array('_handler' => 'AFK_Default'));
 	return $r;
 }
 
