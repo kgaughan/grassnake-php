@@ -9,18 +9,21 @@ define('APP_VERSION', '0.2.0');
 function routes() {
 	$r = new AFK_Routes(array('pid' => '\d+', 'iid' => '\d+'));
 
-	$r->route('/', array('_handler' => 'Root', '_view' => 'console'));
-	$r->route('/about', array('_handler' => 'Root', '_view' => 'about'));
+	$r->defaults(array('_handler' => 'Root'));
+	$r->route('/', array('_view' => 'console'));
+	$r->route('/about', array('_view' => 'about'));
 
-	$r->route('/projects/', array('_handler' => 'Project'));
-	$r->route('/projects/{pid}', array('_handler' => 'Project'));
-	$r->route('/issues/', array('_handler' => 'Issue'));
-	$r->route('/issues/{iid}', array('_handler' => 'Issue'));
+	$r->defaults(array('_handler' => 'Project'));
+	$r->route('/projects/');
+	$r->route('/projects/{pid}');
 
-	$r->route('/watches/',
-		array('_handler' => 'Watch', '_view' => 'new'));
-	$r->route('/watches/{iid}',
-		array('_handler' => 'Watch', '_view' => 'watch'));
+	$r->defaults(array('_handler' => 'Issue'));
+	$r->route('/issues/');
+	$r->route('/issues/{iid}');
+
+	$r->defaults(array('_handler' => 'Watch'));
+	$r->route('/watches/', array('_view' => 'new'));
+	$r->route('/watches/{iid}', array('_view' => 'watch'));
 
 	return $r;
 }
